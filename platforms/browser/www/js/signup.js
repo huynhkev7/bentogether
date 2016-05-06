@@ -8,7 +8,7 @@ $(document).ready(function () {
         localStorage.setItem("password", password);
         localStorage.setItem("passcode", passcode);
         
-        window.location = "index.html";
+        window.location = "initGrocery.html";
 
     });
 });
