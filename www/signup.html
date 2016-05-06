@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
    <head>
@@ -17,28 +16,29 @@
              <h1 class="no-margin-top text-center">Welcome to BenTogether!</h1>
              <form class="form-horizontal">
               <div class="form-group">
-                <label for="inputUserName" class="col-sm-2 control-label">Username</label>
+                <label for="inputNewUserName" class="col-sm-2 control-label">New Username</label>
                 <div class="col-sm-10">
-                  <input type="Username" class="form-control" id="username" placeholder="Username...">
+                  <input type="newUsername" class="form-control" id="newUsername" placeholder="Username...">
                 </div>
               </div>
               <div class="form-group">
-                <label for="inputPassword" class="col-sm-2 control-label">Password</label>
+                <label for="inputNewPassword" class="col-sm-2 control-label">New Password</label>
                 <div class="col-sm-10">
-                  <input type="Password" class="form-control" id="password" placeholder="Password...">
+                  <input type="newPassword" class="form-control" id="inputNewPassword" placeholder="Password...">
                 </div>
               </div>
+              <div class="form-group">
+                <label for="inputNewPassCode" class="col-sm-2 control-label">New 4-digit Passcode</label>
+                <div class="col-sm-10">
+                  <input type="newPasswordCode" class="form-control" id="inputNewPassCode" placeholder="New 4-digit Passcode...">
+                </div>
+                </div>
               </div>
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                  <button type="button" id="login" class="btn btn-default btn-lg btn-block ">Sign In</button>
+                  <button type="button" id="signup" class="btn btn-default btn-lg btn-block ">Submit</button>
                 </div>
               </div>
-              <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                  <button type="button" id="signup" class="btn btn-default btn-lg btn-block ">Sign Up</button>
-                </div>
-              </div>              
             </form>           
          </div>
 
@@ -50,6 +50,7 @@
       <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
       <!-- Latest compiled and minified JavaScript -->
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> 
-      <script src="js/login.js"></script>
+      <script src="js/signup.js"></script>
+      
    </body>
 </html>
