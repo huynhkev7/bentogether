@@ -1,0 +1,49 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 320px;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+#header {
+    font-size: 24px;
+    background: #222;
+    color: white;
+    margin-bottom: 10px;
+}
+
+button {
+    width: 180px;
+    height: 30px;
+    font-size: 14px;
+    color: white;
+    background: green;
+}
+
+.purple {
+    background: purple;
+}
+
+#monster {
+    width: 240px;
+    background: cyan;
+    height: 300px;
+    margin: auto;
+}
+
+#chosen div {
+    height: 30px;
+    width: 75px;
+    background: #ccc;
+    margin: 5px auto 5px auto;
+}
+
+#foods button {
+    background: gray;
+    width: 75px;
+}
+
+#red {
+    width: 240px;
+}
