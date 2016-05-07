@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Bentogether</title>
+      <!--   <link rel="stylesheet" type="text/css" href="css/style.css"> -->
+      <link rel="stylesheet" type="text/css" href="css/navbar.css">
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
+      <meta charset=utf-8 />
+   </head>
+   <body>
+
+      <!--wrap the page content do not style this-->
+      <div id="page-content">
+         <div class="container" >
+            <h1 class="no-margin-top text-center">Add Child Information</h1>
+            <br/>
+            <div id="childList">
+               <!-- add children -->
+               <form id="child-1"> 
+                 <h3>Child #1</h3>
+                 <div class="form-group">
+                   <label for="childName">Child's Name</label>
+                   <input type="childName" class="form-control childName" placeholder="Child's name...">
+                 </div>
+                 <div class="form-group">
+                   <label for="height">Height</label>
+                   <input type="height" class="form-control heightFeet" placeholder="height (feet)">
+                   <input type="height" class="form-control heightInches" placeholder="height (inches)">
+                 </div>
+                 <div class="form-group">
+                   <label for="allergies">Allergies (Comma seperated list)</label>
+                   <input type="allergies" class="form-control allergies" placeholder="Mangos, nuts, etc...">               
+                 </div>
+                 <div class="form-group">
+                     <label for="gender">Gender</label>
+                     <br/>
+                     <label class="radio-inline">
+                       <input type="radio" name="inlineRadioOptions" class="maleRadio" value="male"> Male
+                     </label>
+                     <label class="radio-inline">
+                       <input type="radio" name="inlineRadioOptions" class="femaleRadio" value="female"> Female
+                     </label>
+                 </div>
+                 <div class="form-group">
+                   <label for="lunchTime">Lunch Time</label>
+                   <input type="lunchTime" class="form-control timeHours" placeholder="Hour">
+                   <input type="lunchTime" class="form-control timeMinutes" placeholder="Minute">
+                 </div>
+               </form>                 
+            </div>
+            <button type="button" id="addChildButton" class="btn btn-primary">Add Another Child</button>  
+            <hr/>
+            <button type="button" id="submitChildInfo" class="btn btn-default btn-lg btn-block ">Submit</button>  
+         </div>
+         <!-- /.container -->  
+      </div>
+      <!-- /#page-content -->
+
+      <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+      <!-- Latest compiled and minified JavaScript -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> 
+      <script src="js/addChild.js"></script>
+
+
+   </body>
+</html>
