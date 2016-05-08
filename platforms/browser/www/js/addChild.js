@@ -4,7 +4,7 @@ $(document).ready(function () {
         var formTemplate = '<h3>Child #' + (numberOfChildren + 1) + '</h3> <div class="form-group"> <label for="childName">Child Name</label> <input type="childName" class="form-control childName" placeholder="Child name..."> </div><div class="form-group"> <label for="height">Height</label> <input type="height" class="form-control heightFeet" placeholder="height (feet)"> <input type="height" class="form-control heightInches" placeholder="height (inches)"> </div><div class="form-group"> <label for="allergies">Allergies (Comma seperated list)</label> <input type="allergies" class="form-control allergies" placeholder="Mangos, nuts, etc..."> </div><div class="form-group"> <label for="gender">Gender</label> <br/> <label class="radio-inline"> <input type="radio" name="inlineRadioOptions" class="maleRadio" value="male"> Male </label> <label class="radio-inline"> <input type="radio" name="inlineRadioOptions" class="femaleRadio" value="female"> Female </label> </div><div class="form-group"> <label for="lunchTime">Lunch Time</label> <input type="lunchTime" class="form-control timeHours" placeholder="Hour"> <input type="lunchTime" class="form-control timeMinutes" placeholder="Minute"> </div>';
         var newChildForm = $("<form id=" + "child-" + (numberOfChildren + 1) + " ></form>");
         newChildForm = newChildForm.append(formTemplate);
-        $("#childList").append(newChildForm);    
+        $("#childList").append(newChildForm).append("<hr/>");    
     });
 
     //loop all child accounts and save it in localStorage

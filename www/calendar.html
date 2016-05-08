@@ -8,6 +8,19 @@
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
       <meta charset=utf-8 />
    </head>
+   <style>
+      .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+         border: 1px solid #ddd;
+      }
+      .day:hover {
+          background-color: #ddd;
+          -webkit-transition: width 2s; /* Safari */
+          transition: width 2s; 
+          animation: pulse 5s infinite;
+          opacity: .8;
+      }     
+
+   </style>
    <body>
 
       <!-- sliding nav -->
@@ -35,7 +48,18 @@
       <div id="page-content">
          <div class="container" >
             <h1 class="no-margin-top" id="calendar-title"></h1>
-
+            <div class="table-responsive">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                 <div id="leftControl" class="col-xs-4 col-sm-4 col-md-4" style="text-align: left"><</div>
+                 <div id="monthTitle" class="col-xs-4 col-sm-4 col-md-4" style="text-align: center">May 2016</div>
+                 <div id="right" class="col-xs-4 col-sm-4 col-md-4" style="text-align: right">></div>
+              </div>
+              <table class="table" id="table">
+                <tr>
+                   <th>Mon</th><th>Tue</th><th>Wed</th><th>Th</th><th>Fri</th><th>Sat</th><th>Sun</th>
+                </tr>
+              </table>
+            </div>
 
  
             <br />

@@ -57,7 +57,7 @@ $(document).ready(function () {
 	$.each( foods, function( key, value ) {
 	  var food = key;
 	  var thumbnail = value["imageSrc"];
-	  $("#groceryContainer").append('<div class="col-sm-12 col-md-12 grocery-item"><div class="thumbnail"><img src=' + thumbnail +  ' alt="..."><div class="caption"><h3 class="foodName">' + food + '</h3><p>...</p><p><a href="#" value=' + food + ' class="btn btn-warning selectFoodButton" role="button">Unselected</a> <a href="#" class="btn btn-default" role="button">Button</a></p></div></div></div>');
+	  $("#groceryContainer").append('<div class="col-sm-12 col-md-12 grocery-item"><div class="thumbnail"><img src=' + thumbnail +  ' alt="..."><div class="caption"><h3 class="foodName">' + food + '</h3><p>...</p><p><a value=' + food + ' class="btn btn-warning selectFoodButton" role="button">Unselected</a></p></div></div></div>');
 	});    
     
 	$(".selectFoodButton").each(function(index){
