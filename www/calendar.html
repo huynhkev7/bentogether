@@ -10,15 +10,36 @@
    </head>
    <style>
       .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
-         border: 1px solid #ddd;
+         border: none;
+         text-align: center;
       }
       .day:hover {
-          background-color: #ddd;
+          background-color: #1BB9EC;
           -webkit-transition: width 2s; /* Safari */
           transition: width 2s; 
           animation: pulse 5s infinite;
           opacity: .8;
+          cursor: pointer;
+          border-radius: 200px;
       }     
+
+      #calendarControls, #nameOfDays {
+         background-color: #1BB9EC;
+         color: white;
+      }
+
+      #calendarControls th, #nameOfDays th {
+         border: none;
+      }
+
+      img {
+         width: 25%;
+      }
+
+      #calendarControls {
+         padding: 1em;
+      }
+
 
    </style>
    <body>
@@ -47,27 +68,28 @@
       <!--wrap the page content do not style this-->
       <div id="page-content">
          <div class="container" >
-            <h1 class="no-margin-top" id="calendar-title"></h1>
+           <!--  <h1 class="no-margin-top" id="calendar-title"></h1>-->
             <div class="table-responsive">
-              <div class="col-md-12 col-sm-12 col-xs-12">
-                 <div id="leftControl" class="col-xs-4 col-sm-4 col-md-4" style="text-align: left"><</div>
+              <div id="calendarControls" class="col-md-12 col-sm-12 col-xs-12">
+                 <div id="leftControl" class="col-xs-4 col-sm-4 col-md-4" style="text-align: left"><img src="images/arrow-point-to-right.png"></div>
                  <div id="monthTitle" class="col-xs-4 col-sm-4 col-md-4" style="text-align: center">May 2016</div>
-                 <div id="right" class="col-xs-4 col-sm-4 col-md-4" style="text-align: right">></div>
+                 <div id="rightControl" class="col-xs-4 col-sm-4 col-md-4" style="text-align: right"><img src="images/arrow-point-to-left.png"></div>
               </div>
               <table class="table" id="table">
-                <tr>
-                   <th>Mon</th><th>Tue</th><th>Wed</th><th>Th</th><th>Fri</th><th>Sat</th><th>Sun</th>
+                <tr id="nameOfDays">
+                   <th>S</th><th>M</th><th>T</th><th>W</th><th>T</th><th>F</th><th>S</th>
                 </tr>
               </table>
             </div>
-
- 
+            <button type="button" style="float: right" class="btn btn-danger">Select</button> 
+<!--  
             <br />
             <div id="header">Bentogether</div>
             <button id="build">Build a meal</button><br>
             <button id="approve" class="purple">Approve a meal</button><br>
             <button id="prepare" class="purple">Prepare a meal</button><br>
             <button id="rewards">Rewards</button>
+-->
          </div>
 
 

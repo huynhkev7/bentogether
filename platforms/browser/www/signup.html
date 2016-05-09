@@ -8,36 +8,59 @@
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
       <meta charset=utf-8 />
    </head>
+
+   <style>
+      .input-group-addon img{
+        width: 20px;
+      }
+
+      .input-group-addon {
+        border:none;
+        background-color: white;
+      }
+
+      .form-control {
+        border:none;
+        box-shadow: none;
+      }
+
+      form {
+        margin: 5%;
+      }   
+      body{
+        background-image: url("images/bg3.png");
+        background-size: 120% auto;
+      }   
+   </style>
    <body>
 
       <!--wrap the page content do not style this-->
       <div id="page-content">
          <div class="container" >
-             <h1 class="no-margin-top text-center">Welcome to BenTogether!</h1>
+             <img src="images/logo.png" class="img-responsive" alt="Responsive image">
+             <br />
+             <br />
+             <div class="row">
+              <div class="col-xs-6"><img src="images/dino1.png" class="img-responsive" alt="Responsive image">  </div>
+              <div class="col-xs-6"><img src="images/dino2_red.png"  style="width: 65%" class="img-responsive" alt="Responsive image">
+              </div>
+             </div>
              <form class="form-horizontal">
               <div class="form-group">
                 <label for="inputNewUserName" class="col-sm-2 control-label">New Username</label>
-                <div class="col-sm-10">
                   <input type="newUsername" class="form-control" id="newUsername" placeholder="Username...">
-                </div>
               </div>
               <div class="form-group">
                 <label for="inputNewPassword" class="col-sm-2 control-label">New Password</label>
-                <div class="col-sm-10">
                   <input type="newPassword" class="form-control" id="inputNewPassword" placeholder="Password...">
-                </div>
               </div>
               <div class="form-group">
                 <label for="inputNewPassCode" class="col-sm-2 control-label">New 4-digit Passcode</label>
-                <div class="col-sm-10">
                   <input type="newPasswordCode" class="form-control" id="inputNewPassCode" placeholder="New 4-digit Passcode...">
                 </div>
-                </div>
               </div>
-              <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                  <button type="button" id="signup" class="btn btn-default btn-lg btn-block ">Submit</button>
-                </div>
+              <div class="form-group text-center">
+                  <button type="button" id="signup" class="btn btn-warning btn-lg">Create Account</button>
               </div>
             </form>           
          </div>

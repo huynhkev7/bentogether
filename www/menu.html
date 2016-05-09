@@ -4,9 +4,24 @@
       <title>Bentogether</title>
       <!--   <link rel="stylesheet" type="text/css" href="css/style.css"> -->
       <link rel="stylesheet" type="text/css" href="css/navbar.css">
+      <link rel="stylesheet" type="text/css" href="css/navbarStyling.css">
       <!-- Latest compiled and minified CSS -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
       <meta charset=utf-8 />
+      <link rel="stylesheet" type="text/css" href="css/navbarStyling.css">
+      <style>
+        #notification {
+          float: right;
+        }
+
+        #notification span {
+          position: relative;
+          right: -55%;
+          color: #F06B2F;
+          font-weight: bold;
+        }
+
+      </style>
    </head>
    <body>
 
@@ -20,12 +35,18 @@
                <span class="icon-bar"></span>
                <span class="icon-bar"></span>
                </a>
-               <a class="navbar-brand" href="#">BenTogether</a>
+               <a class="navbar-brand" href="#">Home</a>
+               <div id="notification">
+                  <span>0</span>
+                  <img src="images/notifications-button.png" style="width: 45px" />  
+               </div>
+               
             </div>
             <div id="slidemenu">
                <ul class="nav navbar-nav">
-                  <li id="home" class="active"><a href="#">Home</a></li>
-                  <li><a href="#settings">Settings</a></li>
+                  <li id="home" class="active"><a href="#">Food List</a></li>
+                  <li><a href="#settings">Nutrition</a></li>
+                  <li><a href="#settings">Setting</a></li>
                </ul>
             </div>
          </div>
@@ -35,9 +56,7 @@
       <div id="page-content">
          <div class="container" id="listOfChildren">
             <h1 class="no-margin-top">Select Child</h1>
-            <!-- 
-            <button type="button" value="bob" class="btn btn-default btn-lg btn-block children">Bob</button>
-            <button type="button" value = "sarah" class="btn btn-default btn-lg btn-block children">Sarah</button>-->
+            <button type="button" id="addChild" class="btn btn-primary">Add Child</button>  
          </div>
 
 
@@ -54,11 +73,18 @@
       <script>
 
           $(document).ready(function () {
+              //add chidreb
+              $("#addChild").click(function(){
+                window.location = "addChildren.html";
+              });
+
               //get list of children and add to the DOM
               var listOfChildren = JSON.parse(localStorage.getItem("listOfChildren"));
-              $.each( listOfChildren, function( key, value ) {
-               $("#listOfChildren").append('<button type="button" value="' + key + '" class="btn btn-default btn-lg btn-block children">' + key + '</button>')
-              });
+              if(listOfChildren != null){
+                $.each( listOfChildren, function( key, value ) {
+                 $("#listOfChildren").append('<button type="button" value="' + key + '" class="btn btn-default btn-lg btn-block children">' + key + '</button>')
+                });
+              };
               
               //redirect to calendar page for child
               $(".children").click(function() {
@@ -67,6 +93,8 @@
                console.log(url);
                window.location = url;
             });
+
+
           });
 
       </script>
