@@ -31,7 +31,7 @@
             </div>
             <div id="slidemenu">
                <ul class="nav navbar-nav">
-                  <li id="home" class="active"><a href="#">Food List</a></li>
+                  <li id="foodList"><a href="#">Food List</a></li>
                   <li><a href="#settings">Nutrition</a></li>
                   <li><a href="#settings">Setting</a></li>
                </ul>
@@ -61,6 +61,11 @@
 
           $(document).ready(function () {
               //add chidreb
+
+              $("#foodList").click(function(){
+                window.location = "initGrocery.html";
+              });
+
               $("#addChild").click(function(){
                 window.location = "addChildren.html";
               });

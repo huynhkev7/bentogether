@@ -4,27 +4,87 @@
    <head>
       <title>Bentogether</title>
       <!--   <link rel="stylesheet" type="text/css" href="css/style.css"> -->
-      <link rel="stylesheet" type="text/css" href="css/navbar.css">
+      <link rel="stylesheet" type="text/css" href="css/navbar.css">    
       <!-- Latest compiled and minified CSS -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
+      <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
       <meta charset=utf-8 />
+      <link rel="stylesheet" type="text/css" href="css/navbarStyling.css">  
    </head>
+
+      <style>
+
+        .circle {
+           /*background-color: rgba(204, 0, 102, 0);*/
+           border: 3px solid #EA4C98;
+           height: 35px;
+           width: 35px;
+           -moz-border-radius:75px;
+           -webkit-border-radius: 75px;          
+        }
+        .allergy {
+          font-size: 20pt;
+          margin-left: 50px;
+        }
+
+        #addAllergy {
+          font-size: 20pt;
+          margin-left: 9px;
+        }
+        .circle:hover, .circleActive {
+          background-color: #F06B2F;
+          border: 3px solid #F06B2F;
+        }
+
+        .icon-plus-sign {
+          font-size: 3em;
+          color: #EA4C98;
+        }
+
+        .addAllergyInput {
+          width: 80%;
+          margin-left: 38pt;
+        }
+
+      </style>
+
    <body>
+      <!-- sliding nav -->
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="slide-nav">
+         <div class="container">
+            <div class="navbar-header">
+               <a class="navbar-brand" href="#">Food List</a>
+               <div id="notification">
+                  <img src="images/arrow-point-to-left.png" style="width: 40px" />  
+               </div>
+               
+            </div>
+         </div>
+      </div>
 
       <!--wrap the page content do not style this-->
       <div id="page-content">
          <div class="container" >
-            <h1 class="no-margin-top text-center">Select Common Household Groceries</h1>
-            <input id="searchGroceryBar" type="text" class="form-control" placeholder="Search Groceries">
-            <br/>
+           <h3 class="no-margin-top text-center" style="color: #F4966C">Select foods that you commonly have in your household.</h3>
+           <div id="allergyList" class="form-group col-xs-12">                    
+           </div>
+           <div class="form-group col-xs-12">
+            <div class="row">
+              <i id="addAllergyIcon" class="icon-plus-sign icon-3"></i>
+              <span id="addAllergy">Add Food</span>
+            </div> 
+           </div>
+            <!-- <input id="searchGroceryBar" type="text" class="form-control" placeholder="Search Groceries">
+            <br/>-->
             <!-- grocery items -->
+            <!-- 
             <div class="row" id="groceryContainer">
             </div>  
             <div class="form-group">
               <div class="col-sm-offset-2 col-sm-10">
                 <button type="button" id="submitInitGroceries" class="btn btn-default btn-lg btn-block ">Submit</button>
               </div>
-            </div>
+            </div>-->
          </div>
 
 
@@ -36,6 +96,6 @@
       <!-- Latest compiled and minified JavaScript -->
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> 
       <script src="js/grocery.js"></script>
-
+      <script src="js/navbar.js"></script>
    </body>
 </html>
