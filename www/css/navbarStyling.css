@@ -5,3 +5,14 @@
 .navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav>li>a{
 	color: white;
 }
+
+#notification {
+  float: right;
+}
+
+#notification span {
+  position: relative;
+  right: -55%;
+  color: #F06B2F;
+  font-weight: bold;
+}

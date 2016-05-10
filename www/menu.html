@@ -9,19 +9,6 @@
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
       <meta charset=utf-8 />
       <link rel="stylesheet" type="text/css" href="css/navbarStyling.css">
-      <style>
-        #notification {
-          float: right;
-        }
-
-        #notification span {
-          position: relative;
-          right: -55%;
-          color: #F06B2F;
-          font-weight: bold;
-        }
-
-      </style>
    </head>
    <body>
 
@@ -80,7 +67,9 @@
 
               //get list of children and add to the DOM
               var listOfChildren = JSON.parse(localStorage.getItem("listOfChildren"));
+              console.log(listOfChildren);
               if(listOfChildren != null){
+                console.log("entering");
                 $.each( listOfChildren, function( key, value ) {
                  $("#listOfChildren").append('<button type="button" value="' + key + '" class="btn btn-default btn-lg btn-block children">' + key + '</button>')
                 });

@@ -4,58 +4,201 @@
    <head>
       <title>Bentogether</title>
       <!--   <link rel="stylesheet" type="text/css" href="css/style.css"> -->
-      <link rel="stylesheet" type="text/css" href="css/navbar.css">
-      <link rel="stylesheet" type="text/css" href="css/navbar.css">
-      <link rel="stylesheet" type="text/css" href="css/navbarStyling.css">      
+      <link rel="stylesheet" type="text/css" href="css/navbar.css">    
       <!-- Latest compiled and minified CSS -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
+
+
+      <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+
+
       <meta charset=utf-8 />
+      <link rel="stylesheet" type="text/css" href="css/navbarStyling.css">  
+      <style>
+        .form-control, .gender,#dietary  {
+          border: 1px solid #F06B2F;
+          box-shadow: none;
+          height: 50px;
+        }
+
+        .gender, #dietary {
+          text-align: center;
+          border-radius: 5px;
+          top: 50%;
+        }
+        .gender span, #dietary span {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);          
+        }
+
+        #dietary {
+          border: 1px solid #48C8F3;
+          color: #48C8F3;
+        }
+
+        .circle {
+           /*background-color: rgba(204, 0, 102, 0);*/
+           border: 3px solid #EA4C98;
+           height: 35px;
+           width: 35px;
+           -moz-border-radius:75px;
+           -webkit-border-radius: 75px;          
+        }
+        .allergy {
+          font-size: 20pt;
+          margin-left: 50px;
+        }
+
+        #addAllergy {
+          font-size: 20pt;
+          margin-left: 9px;
+        }
+        .circle:hover, .circleActive {
+          background-color: #F06B2F;
+          border: 3px solid #F06B2F;
+        }
+
+        .icon-plus-sign {
+          font-size: 3em;
+          color: #EA4C98;
+        }
+
+        .gender {
+          font-size: 12pt;
+          font-weight: bold;
+        }
+        .gender:hover, .genderActive {
+          background-color: #EA4C98;
+        }
+
+        .addAllergyInput {
+          width: 80%;
+          margin-left: 38pt;
+        }
+
+      </style>
    </head>
    <body>
+      <!-- sliding nav -->
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="slide-nav">
+         <div class="container">
+            <div class="navbar-header">
+               <a class="navbar-toggle" id="backNav"> 
+                 <span class="sr-only">Toggle navigation</span>
+                 <img  class="img-responsive" src="images/arrow-point-to-right.png" />
+               </a>
+               <a  class="navbar-brand">Add Child</a>              
+            </div>
+         </div>
+      </div>
 
       <!--wrap the page content do not style this-->
       <div id="page-content">
          <div class="container" >
-            <h1 class="no-margin-top text-center">Add Child Information</h1>
-            <br/>
             <div id="childList">
                <!-- add children -->
                <form id="child-1"> 
-                 <h3>Child #1</h3>
-                 <div class="form-group">
-                   <label for="childName">Child's Name</label>
+
+                 <div class="form-group col-xs-12">
                    <input type="childName" class="form-control childName" placeholder="Child's name...">
                  </div>
-                 <div class="form-group">
-                   <label for="height">Height</label>
-                   <input type="height" class="form-control heightFeet" placeholder="height (feet)">
-                   <input type="height" class="form-control heightInches" placeholder="height (inches)">
-                 </div>
-                 <div class="form-group">
-                   <label for="allergies">Allergies (Comma seperated list)</label>
-                   <input type="allergies" class="form-control allergies" placeholder="Mangos, nuts, etc...">               
-                 </div>
-                 <div class="form-group">
-                     <label for="gender">Gender</label>
-                     <br/>
+
+                 <div class="form-group col-xs-12">
+                    <div id="male" class="col-xs-5 gender">
+                      <span>Male</span>
+                    </div>
+                    <div class="col-xs-2"></div>
+                    <div id="female" class="col-xs-5 gender">
+                      <span>Female</span>
+                    </div>
+                    <!--
                      <label class="radio-inline">
                        <input type="radio" name="inlineRadioOptions" class="maleRadio" value="male"> Male
                      </label>
                      <label class="radio-inline">
                        <input type="radio" name="inlineRadioOptions" class="femaleRadio" value="female"> Female
-                     </label>
+                     </label>-->
+                 </div>
+
+                 <div class="form-group col-xs-12">
+                   <div class="col-xs-2">
+                     <img src="images/icon.png" class="img-responsive"/>
+                   </div>                 
+                   <div class="col-xs-5">
+                     <input type="height" class="form-control heightFeet" placeholder="Feet">
+                   </div>
+                   <div class="col-xs-5">
+                     <input type="height" class="form-control heightInches" placeholder="Inches">
+                   </div>
+                 </div>
+
+                 <div class="form-group col-xs-12">
+                   <div class="col-xs-2">
+                     <img src="images/ruler.png" class="img-responsive"/>
+                   </div>                 
+                   <div class="col-xs-5">
+                     <input type="height" class="form-control weight" placeholder="Weight (feet)">
+                   </div>
+                   <div class="col-xs-5">
+                     <input type="height" class="form-control age" placeholder="Age">
+                   </div>
+                 </div>
+
+                <div id="dietary" class="form-group col-xs-12">
+                  <span>Dietary Restrictions</span>
+                </div>
+
+                 <div id="allergyList" class="form-group col-xs-12">
+                  <div class="row">
+                    <div class="circle col-xs-3"></div>
+                    <div class="allergy">Gluten Free</div>
+                  </div>
+                  <div class="row">
+                    <div class="circle col-xs-3"></div>
+                    <div class="allergy">Lactose Intolerance</div>
+                  </div>
+                  <div class="row">
+                    <div class="circle col-xs-3"></div>
+                    <div class="allergy">Vegan</div>
+                  </div>
+                  <div class="row">
+                    <div class="circle col-xs-3"></div>
+                    <div class="allergy">Vegetarian</div>
+                  </div>                           
+                  <div class="row">
+                    <div class="circle col-xs-3"></div>
+                    <div class="allergy">Pescatarian</div>
+                  </div>  
+                  <div class="row">
+                    <div class="circle col-xs-3"></div>
+                    <div class="allergy">Nut Allergy</div>
+                  </div>                                                             
+                 </div>
+                 <div class="form-group col-xs-12">
+                  <div class="row">
+                    <i id="addAllergyIcon" class="icon-plus-sign icon-3"></i>
+                    <span id="addAllergy">Add Restriction</span>
+                  </div> 
+                 </div>
+                 <!-- 
+                 <div class="form-group">
+                   <label for="allergies">Allergies (Comma seperated list)</label>
+                   <input type="allergies" class="form-control allergies" placeholder="Mangos, nuts, etc...">               
                  </div>
                  <div class="form-group">
                    <label for="lunchTime">Lunch Time</label>
                    <input type="lunchTime" class="form-control timeHours" placeholder="Hour">
                    <input type="lunchTime" class="form-control timeMinutes" placeholder="Minute">
-                 </div>
+                 </div>-->
+
                </form>
                <hr/>       
             </div>
-            <button type="button" id="addChildButton" class="btn btn-primary">Add Another Child</button>  
-            <hr/>
-            <button type="button" id="submitChildInfo" class="btn btn-default btn-lg btn-block ">Submit</button>  
+            <!-- <button type="button" id="addChildButton" class="btn btn-primary">Add Another Child</button>  
+            <hr/>-->
+            <button type="button" id="submitChildInfo" class="btn btn-warning btn-lg btn-block ">Submit</button>  
          </div>
          <!-- /.container -->  
       </div>

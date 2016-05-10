@@ -9,22 +9,82 @@ $(document).ready(function () {
 
     //loop all child accounts and save it in localStorage
     $("#submitChildInfo").click(function(){
-        var listOfChildren = {};
+        var childBio = {};
+        var allergies = [];
         $("form").each(function(){
-            var childName = $(this).find("input.childName").val();
-            var childBio = {
+            childBio = {
+                childName: $(this).find("input.childName").val(),
                 heightFeet: $(this).find("input.heightFeet").val(),
                 heightInches: $(this).find("input.heightInches").val(),
-                allergies: $(this).find("input.allergies").val(),
-                timeHours: $(this).find("input.timeHours").val(),
-                timeMinutes: $(this).find("input.timeMinutes").val(),
-                gender: $(this).find(".maleRadio").prop('checked') ? "male" : ($(this).find(".femaleRadio").prop('checked') ? "female" : null)
+                weight: $(this).find("input.weight").val(),
+                age: $(this).find("input.age").val(),
+                //allergies: $(this).find("input.allergies").val(),
+                //timeHours: $(this).find("input.timeHours").val(),
+                //timeMinutes: $(this).find("input.timeMinutes").val(),
+                gender: $(this).find("#male").hasClass('genderActive') ? "male" : ($(this).find("#female").hasClass("genderActive") ? "female" : null)
             };
-            listOfChildren[childName] = childBio;
+            //add allergies...
+            $(".circleActive").each(function(){
+                allergies.push($(this).next().text());
+            });
+            childBio["allergies"] = allergies;
         });
+
+        //set to storage
+        if(localStorage.getItem("listOfChildren") != null){
+            var listOfChildren = JSON.parse(localStorage.getItem("listOfChildren"));
+            listOfChildren[childBio["childName"]] = childBio;
+        }else{
+            var listOfChildren = {};
+            listOfChildren[childBio["childName"]] = childBio;
+        };
         localStorage.setItem("listOfChildren", JSON.stringify(listOfChildren));
-        alert("Saving all children bio...");
         window.location = "menu.html";
     });
+
+    $("#backNav").click(function(){
+        window.location = "menu.html";
+    });
+
+    $("#allergyList").on('click', '.circle', function(){
+        console.log($(this));
+        if($(this).hasClass("circleActive")){
+            $(this).removeClass("circleActive");
+        }else{
+            $(this).addClass("circleActive");
+        }
+    });
+
+    $("#addAllergyIcon").click(function(){
+        var allergyTemplate = '<div class="row addAllergyRow"> <div class="circle col-xs-3"></div><input type="childName" class="form-control addAllergyInput' + ' placeholder="Allergy..."></div>';
+        $("#allergyList").append(allergyTemplate);
+         $('.addAllergyInput').keypress(function (e) {
+           console.log($(this));
+          console.log($(this).val());
+          if (e.which == 13) {
+            var allergyAnswer = $(this).val();
+            $(this).after("<div class='allergy'>" + allergyAnswer + "</div>");
+            $(this).remove();
+            //$(".addAllergyRow").append("<div class='allergy'>" + allergyAnswer + "</div>");
+            return false;    //<---- Add this line
+          }
+        });   
+    });
+
+    $("#male").click(function(){
+        if(!$(this).hasClass("genderActive")){
+            $(this).addClass("genderActive");
+            $("#female").removeClass("genderActive");
+        }
+    });
+
+    $("#female").click(function(){
+        if(!$(this).hasClass("genderActive")){
+            $(this).addClass("genderActive");
+            $("#male").removeClass("genderActive");
+        }
+    });
+
+
 
 });
