@@ -8,7 +8,69 @@
       <!-- Latest compiled and minified CSS -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
       <meta charset=utf-8 />
+      <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
       <link rel="stylesheet" type="text/css" href="css/navbarStyling.css">
+      <style>
+        .petChildInfo {
+          background-color: #F06B2F;
+          padding-top: 7px;
+          padding-bottom: 13px;
+          border-radius: 5px;
+        };
+        #arrowRight{
+          color: red;
+          font-size: 50px;
+        }
+        .petBackground {
+          background-color: white;
+          height: 60px;
+          width: 60px;
+          position: absolute;
+          border-radius: 75px;
+        }
+
+        .pet {
+          width: 72px;
+          position: relative;
+          right: -10px;
+        }
+
+        .iconContainer {
+          padding-top: 10px;
+        }
+
+        .childName {
+          font-size: 28pt;
+          color: white;
+        }
+        .row {
+          margin-top: 10px;
+        }
+
+        .circle {
+           /*background-color: rgba(204, 0, 102, 0);*/
+           border: 3px solid #EA4C98;
+           height: 35px;
+           width: 35px;
+           -moz-border-radius:75px;
+           -webkit-border-radius: 75px;          
+        }
+
+        #addChild {
+          font-size: 20pt;
+          margin-left: 9px;
+        }
+        .circle:hover, .circleActive {
+          background-color: #F06B2F;
+          border: 3px solid #F06B2F;
+        }
+
+        .icon-plus-sign {
+          font-size: 3em;
+          color: #EA4C98;
+        }
+
+      </style>
    </head>
    <body>
 
@@ -43,10 +105,19 @@
       <div id="page-content">
          <div class="container" id="listOfChildren">
             <h1 class="no-margin-top">Select Child</h1>
-            <button type="button" id="addChild" class="btn btn-primary">Add Child</button>  
+            <!-- <button type="button" id="addChild" class="btn btn-primary">Add Child</button>-->  
+            <!-- <div class="row col-xs-12 col-md-12 col-sm-12">
+              <div class="col-md-8 col-xs-8 col-sm-8 petChildInfo">
+                <div class="col-md-7 col-sm-7 col-xs-7 childName">' + key + ' </div>
+                <div class="col-md-5 col-sm-5 col-xs-5 pet"><span class="petBackground"></span><img class="pet img-responsive" src="images/dino2_red.png" /></div>
+              </div>
+              <div class="col-md-4 col-sm-4 col-xs-4 iconContainer" ><i id="arrowRight" style="color: red; font-size: 50px" class="icon-chevron-right icon-chevron-right-3"></i> </div>  
+            </div>-->
          </div>
-
-
+         <div class="col-xs-12 container" style="margin-top: 10px">
+            <i id="addChildIcon" class="icon-plus-sign icon-3"></i>
+            <span id="addChild">Add Child</span>   
+         </div>
          <!-- /.container -->  
       </div>
       <!-- /#page-content -->
@@ -66,7 +137,7 @@
                 window.location = "initGrocery.html";
               });
 
-              $("#addChild").click(function(){
+              $("#addChildIcon").click(function(){
                 window.location = "addChildren.html";
               });
 
@@ -76,15 +147,16 @@
               if(listOfChildren != null){
                 console.log("entering");
                 $.each( listOfChildren, function( key, value ) {
-                 $("#listOfChildren").append('<button type="button" value="' + key + '" class="btn btn-default btn-lg btn-block children">' + key + '</button>')
+                 var childTemplate = ' <div class="row col-xs-12 col-md-12 col-sm-12"> <div class="col-md-8 col-xs-8 col-sm-8 petChildInfo"> <div class="col-md-7 col-sm-7 col-xs-7 childName">' + key + ' </div><div class="col-md-5 col-sm-5 col-xs-5 pet"><span class="petBackground"></span><img class="pet img-responsive" src="images/dino2_red.png"/></div></div><div class="col-md-4 col-sm-4 col-xs-4 iconContainer" ><i id="arrowRight" style="color: #EA4C98; font-size: 50px" class="icon-chevron-right icon-chevron-right-3" value="' + key + '" ></i> </div></div>';
+
+                 $("#listOfChildren").append(childTemplate);
                 });
               };
               
               //redirect to calendar page for child
-              $(".children").click(function() {
-               var name = $(this).val();
+              $("#listOfChildren").on('click', '#arrowRight', function() {
+               var name = $(this).attr("value");
                var url = "./calendar.html?name=" + encodeURIComponent(name);
-               console.log(url);
                window.location = url;
             });
 
