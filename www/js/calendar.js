@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    var dateSelected = null;
+    var previousDateSelected = null;
 
     var monthNames = ["January", "February", "March", "April", "May", "June",
       "July", "August", "September", "October", "November", "December"
@@ -81,13 +83,13 @@ $(document).ready(function () {
         var tempPlace = 6;
         while(tempPlace > difference){
             // console.log("diffeence: " + originalDifference);
-            var tableColumnElement = $("<th class='day' style='color:grey'>" + (previousMonthDays - originalDifference) + "</th>");
+            var tableColumnElement = $("<th class='day' style='color:grey' value='" + (currentMonth - 1) + "/" +  (previousMonthDays - originalDifference) + "/2016' >" + (previousMonthDays - originalDifference) + "</th>");
             firstTableRowElement.append(tableColumnElement);
             originalDifference--;
             tempPlace--;
         }
         while(tempPlace >= 0){
-            tableColumnElement = $("<th class='day'>" + currentDay + "</th>");
+            tableColumnElement = $("<th class='day' value='" + currentMonth + "/" + currentDay + "/2016" + "' >" + currentDay + "</th>");
             currentDay++;  
             tempPlace--;
             firstTableRowElement.append(tableColumnElement);         
@@ -101,7 +103,7 @@ $(document).ready(function () {
             currentWeek++;
             var tableRowElement = $("<tr class='week' id='week_" + currentWeek + "' ></tr>");
             for(var j = 0; j < 7; j++){
-                var tableColumnElement = $("<th class='day'>" + currentDay + "</th>");
+                var tableColumnElement = $("<th class='day' value='" + currentMonth + "/" + currentDay + "/2016" + "' >" + currentDay + "</th>");
                 tableRowElement.append(tableColumnElement);
                 currentDay++;
             }
@@ -116,12 +118,12 @@ $(document).ready(function () {
             var tableRowElement = $("<tr class='week' id='week_" + currentWeek + "' ></tr>");
             var tempDays = currentDay;
             for(var i = 0; i < numberOfDaysInMonth - (tempDays - 1); i++){
-                var tableColumnElement = $("<th class='day'>" + currentDay + "</th>");
+                var tableColumnElement = $("<th class='day' value='" + currentMonth + "/" + currentDay + "/2016" + "' >" + currentDay + "</th>");
                 tableRowElement.append(tableColumnElement);
                 currentDay++;                
             }
             for(var j = 1; j <= 7 - (numberOfDaysInMonth - (tempDays - 1)); j++){
-                var tableColumnElement = $("<th class='day' style='color: grey'>" + j + "</th>");
+                var tableColumnElement = $("<th class='day' value='" + (currentMonth + 1) + "/" + j + "/2016" + "'  style='color: grey'>" + j + "</th>");
                 tableRowElement.append(tableColumnElement);              
             }            
             tableElement.append(tableRowElement);
@@ -131,19 +133,19 @@ $(document).ready(function () {
             var tableRowElement = $("<tr class='week' id='week_" + currentWeek + "' ></tr>");
 
             for(var i = 0; i <  7; i++){
-                var tableColumnElement = $("<th class='day'>" + currentDay + "</th>");
+                var tableColumnElement = $("<th class='day' value='" + currentMonth + "/" + currentDay + "/2016" + "' >" + currentDay + "</th>");
                 tableRowElement.append(tableColumnElement);
                 currentDay++;                
             }   
             tableElement.append(tableRowElement); 
             var tableRowTwoElement = $("<tr class='week' id='week_" + currentWeek + "' ></tr>");
             for(var i = 0; i < daysRemaining - 7; i++){
-                var tableColumnElement = $("<th class='day'>" + currentDay + "</th>");
+                var tableColumnElement = $("<th class='day' value='" + currentMonth + "/" + currentDay + "/2016" + "' >" + currentDay + "</th>");
                 tableRowTwoElement.append(tableColumnElement);
                 currentDay++;                
             }      
             for(var x = 1; x <= 7 - (daysRemaining - 7); x++){
-                var tableColumnElement = $("<th class='day' style='color: grey'>" + x + "</th>");
+                var tableColumnElement = $("<th class='day' value='" + (currentMonth + 1) + "/" + x + "/2016" + "'  style='color: grey'>" + x + "</th>");
                 tableRowTwoElement.append(tableColumnElement);             
             }      
 
@@ -151,12 +153,23 @@ $(document).ready(function () {
         }
 
         $(".day").click(function(){
-            if (confirm('Did you want to create a meal on this day?')) {
                 // Save it!
-                window.location = "build.html";
-            } else {
-                // Do nothing!
-            }                  
+                if(!$(this).hasClass("dayActive")){
+                    $(this).addClass("dayActive");
+                    dateSelected = $(this).attr("value");
+                    if(previousDateSelected != null){
+                        previousDateSelected.removeClass("dayActive");    
+                    }
+                    previousDateSelected = $(this);
+
+                };        
+        });
+
+        $("#selectDate").click(function(){
+            console.log(JSON.stringify(dateSelected));
+            localStorage.removeItem("dateSelected");
+            localStorage.setItem("dateSelected", JSON.stringify(dateSelected));
+            window.location = "build.html";     
         });
     }
 

@@ -1,10 +1,10 @@
 $(document).ready(function () {
     $("#login").click(function(){
-        var username = $("#username").val();
-        var password = $("#password").val();
+        var username = $("#username").val().toLowerCase();
+        var password = $("#password").val().toLowerCase();
         console.log(username);
-        var authUsername = localStorage.getItem("username");
-        var authPassword = localStorage.getItem("password");
+        var authUsername = localStorage.getItem("username").toLowerCase();
+        var authPassword = localStorage.getItem("password").toLowerCase();
         if(authUsername != null && authPassword != null){
             if(username == authUsername && password == authPassword){
                 window.location = 'menu.html';
@@ -17,6 +17,7 @@ $(document).ready(function () {
     });
 
     $("#signup").click(function(){
+        localStorage.clear();
         window.location = 'signup.html';
     });  
 
