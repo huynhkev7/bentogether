@@ -52,13 +52,14 @@ $(document).ready(function () {
     function buildCalendar(currentMonth){
         //get start of month, exact day
         var firstDayOfWeek = firstDayOfMonth(currentMonth, 2016);
-        
+        //get previous month's days
+        var previousMonthDays = daysInMonth(currentMonth, 2016);
         //get end of month, exact day
-        
-
+    
 
         var numberOfDaysInMonth = daysInMonth(currentMonth + 1, 2016);
         var numberOfWeeks = parseInt(numberOfDaysInMonth / 7);
+        var previousMonth = 6;
         var currentDay = 1;
         var currentWeek = 1;
         var tableElement = $("#table");
@@ -66,7 +67,36 @@ $(document).ready(function () {
         //delete all week rows
         $(".week").remove();
         //number of rows
-        for(var i = 0; i < numberOfWeeks; i++){
+        //do the first week
+            //for each week...
+        //subtract 6 - firstDayOfWeek and get the start
+        //if you get six you iterate the whole week, 0 place
+        //if you get 0 then you start at the end, 6 place holders
+        //5 then you start on monday, 1 placeholder
+        currentWeek++;
+        var firstTableRowElement = $("<tr class='week' id='week_" + currentWeek + "' ></tr>");
+        var difference = previousMonth - firstDayOfWeek;
+        var originalDifference = 5 - difference;
+        console.log("diffeence: " + originalDifference);
+        var tempPlace = 6;
+        while(tempPlace > difference){
+            // console.log("diffeence: " + originalDifference);
+            var tableColumnElement = $("<th class='day' style='color:grey'>" + (previousMonthDays - originalDifference) + "</th>");
+            firstTableRowElement.append(tableColumnElement);
+            originalDifference--;
+            tempPlace--;
+        }
+        while(tempPlace >= 0){
+            tableColumnElement = $("<th class='day'>" + currentDay + "</th>");
+            currentDay++;  
+            tempPlace--;
+            firstTableRowElement.append(tableColumnElement);         
+        }
+
+        tableElement.append(firstTableRowElement);
+
+
+        for(var i = 1; i < numberOfWeeks; i++){
             //for each week...
             currentWeek++;
             var tableRowElement = $("<tr class='week' id='week_" + currentWeek + "' ></tr>");
@@ -78,8 +108,10 @@ $(document).ready(function () {
             tableElement.append(tableRowElement);
         }
         //add remaining days...
-        if(numberOfDaysInMonth - (currentDay - 1) > 0){
-            console.log("entering");
+        var daysRemaining = numberOfDaysInMonth - (currentDay - 1);
+
+        if(daysRemaining > 0 && daysRemaining <= 7){
+            console.log("entering remaining days: " + (daysRemaining));
             currentWeek++;
             var tableRowElement = $("<tr class='week' id='week_" + currentWeek + "' ></tr>");
             var tempDays = currentDay;
@@ -88,7 +120,34 @@ $(document).ready(function () {
                 tableRowElement.append(tableColumnElement);
                 currentDay++;                
             }
+            for(var j = 1; j <= 7 - (numberOfDaysInMonth - (tempDays - 1)); j++){
+                var tableColumnElement = $("<th class='day' style='color: grey'>" + j + "</th>");
+                tableRowElement.append(tableColumnElement);              
+            }            
             tableElement.append(tableRowElement);
+        }else if(daysRemaining > 0 && daysRemaining > 7){
+            console.log("entering remaining days: " + (daysRemaining));
+            currentWeek++;
+            var tableRowElement = $("<tr class='week' id='week_" + currentWeek + "' ></tr>");
+
+            for(var i = 0; i <  7; i++){
+                var tableColumnElement = $("<th class='day'>" + currentDay + "</th>");
+                tableRowElement.append(tableColumnElement);
+                currentDay++;                
+            }   
+            tableElement.append(tableRowElement); 
+            var tableRowTwoElement = $("<tr class='week' id='week_" + currentWeek + "' ></tr>");
+            for(var i = 0; i < daysRemaining - 7; i++){
+                var tableColumnElement = $("<th class='day'>" + currentDay + "</th>");
+                tableRowTwoElement.append(tableColumnElement);
+                currentDay++;                
+            }      
+            for(var x = 1; x <= 7 - (daysRemaining - 7); x++){
+                var tableColumnElement = $("<th class='day' style='color: grey'>" + x + "</th>");
+                tableRowTwoElement.append(tableColumnElement);             
+            }      
+
+            tableElement.append(tableRowTwoElement);           
         }
 
         $(".day").click(function(){

@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Bentogether</title>
+      <!--   <link rel="stylesheet" type="text/css" href="css/style.css"> -->
+      <link rel="stylesheet" type="text/css" href="css/navbar.css">    
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
+
+
+      <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+
+
+      <meta charset=utf-8 />
+      <link rel="stylesheet" type="text/css" href="css/navbarStyling.css">  
+      <style>
+        .form-control, .gender,#dietary  {
+          border: 1px solid #F06B2F;
+          box-shadow: none;
+          height: 50px;
+        }
+
+        .gender, #dietary {
+          text-align: center;
+          border-radius: 5px;
+          top: 50%;
+        }
+        .gender span, #dietary span {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);          
+        }
+
+        #dietary {
+          border: 1px solid #48C8F3;
+          color: #48C8F3;
+        }
+
+        .circle {
+           /*background-color: rgba(204, 0, 102, 0);*/
+           border: 3px solid #EA4C98;
+           height: 35px;
+           width: 35px;
+           -moz-border-radius:75px;
+           -webkit-border-radius: 75px;          
+        }
+        .allergy {
+          font-size: 20pt;
+          margin-left: 50px;
+        }
+
+        #addAllergy {
+          font-size: 20pt;
+          margin-left: 9px;
+        }
+        .circle:hover, .circleActive {
+          background-color: #F06B2F;
+          border: 3px solid #F06B2F;
+        }
+
+        .icon-plus-sign {
+          font-size: 3em;
+          color: #EA4C98;
+        }
+
+        .gender {
+          font-size: 12pt;
+          font-weight: bold;
+        }
+        .gender:hover, .genderActive {
+          background-color: #EA4C98;
+        }
+
+        .addAllergyInput {
+          width: 80%;
+          margin-left: 38pt;
+        }
+
+        #notification {
+          background-color: white;
+          height: 40px;
+          width: 50px;
+          border-radius: 5px;
+        }
+        #notification div {
+          text-align: center;
+          font-size: 20pt;
+        }
+
+        .row {
+          margin-top: 5px;
+        }
+      </style>
+   </head>
+   <body>
+      <!-- sliding nav -->
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="slide-nav">
+         <div class="container">
+            <div class="navbar-header">
+               <a class="navbar-toggle" id="backNav"> 
+                 <span class="sr-only">Toggle navigation</span>
+                 <img  class="img-responsive" src="images/arrow-point-to-right.png" />
+               </a>
+               <a  class="navbar-brand">Create Meal</a>   
+               <div id="notification">
+                  <div>0</div>
+                  <!--<img src="images/notifications-button.png" style="width: 45px" />  -->
+               </div>                          
+            </div>
+         </div>
+      </div>
+
+      <!--wrap the page content do not style this-->
+      <div id="page-content">
+         <div class="container" >
+          <div class="row">
+            <img src="images/dino2_red.png" class="img-responsive" width=400 />
+          </div>
+            
+            <!-- <button type="button" id="addChildButton" class="btn btn-primary">Add Another Child</button>  
+            <hr/>-->
+            <div class="col-xs-12 container">
+              <div class="col-xs-12 row">
+                <div class="col-xs-6">
+                   <button type="button" id="createMeal" class="btn btn-info btn-lg" >Create Meal</button> 
+                </div>
+
+                <div class="col-xs-6">
+                   <button type="button" id="prepareMeal" class="btn btn-info btn-lg">Prepare Meal</button> 
+                </div>                
+                
+              </div>
+              <div class="col-xs-12 row text-center">
+                <div class="col-xs-3"></div>
+                <div class="col-xs-6 ">
+                   <button type="button" id="customize" class="btn btn-info btn-lg">Customize</button> 
+                </div>                              
+              </div>
+            </div>
+             
+         </div>
+         <!-- /.container -->  
+      </div>
+      <!-- /#page-content -->
+
+      <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+      <!-- Latest compiled and minified JavaScript -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> 
+      <script src="js/createDino.js"></script>
+
+
+   </body>
+</html>
