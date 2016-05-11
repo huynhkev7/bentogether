@@ -44,9 +44,15 @@ $(document).ready(function () {
         return new Date(year, month, 0).getDate();
     }  
 
+    function firstDayOfMonth(month, year){
+        return new Date(year, month).getDay();
+    }
+
     //create the calendar
     function buildCalendar(currentMonth){
         //get start of month, exact day
+        var firstDayOfWeek = firstDayOfMonth(currentMonth, 2016);
+        
         //get end of month, exact day
         
 
