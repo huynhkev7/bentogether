@@ -1,4 +1,8 @@
 $(document).ready(function () {
+
+    var points = parseInt(localStorage.getItem("points"));
+    $("#points").text(points);    
+    
     var dateSelected = null;
     var previousDateSelected = null;
 
@@ -171,6 +175,10 @@ $(document).ready(function () {
             localStorage.setItem("dateSelected", JSON.stringify(dateSelected));
             window.location = "build.html";     
         });
+
+        $("#backNav").click(function(){
+            window.location = "menu.html";
+        });        
     }
 
 
