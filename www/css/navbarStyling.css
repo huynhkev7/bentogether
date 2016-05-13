@@ -4,6 +4,8 @@
 }    
 .navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav>li>a{
 	color: white;
+	font-size: 14pt;
+	font-weight: bold;
 }
 
 #notification {

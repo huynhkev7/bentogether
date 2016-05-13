@@ -1,12 +1,20 @@
 $(document).ready(function () {
+
+    //add points to current user
+    //get current user
+    var currentUser = localStorage.getItem("currentUser");
+    //get current User's bio
+    var listOfChildren = JSON.parse(localStorage.getItem("listOfChildren"));
+
+
 	var selectedItem = null;
 
-	var store = JSON.parse(localStorage.getItem("store"));
+	var store = listOfChildren[currentUser]["store"];
 
-	var closet = JSON.parse(localStorage.getItem("closet"));
+	var closet = listOfChildren[currentUser]["closet"];
 
-    var points = parseInt(localStorage.getItem("points"));
-
+    //new version
+    var points = parseInt(listOfChildren[currentUser]["points"]);
 
     $("#backNav").click(function(){
         window.location = "createDino.html";
@@ -17,8 +25,8 @@ $(document).ready(function () {
     $("#closet").css("color", "white");
 
     function attachAccessory(){
-    	if(JSON.parse(localStorage.getItem("accessory")) != null){
-    		var item = JSON.parse(localStorage.getItem("accessory"));
+    	if(listOfChildren[currentUser]["accessory"] != null){
+    		var item = listOfChildren[currentUser]["accessory"];
     		$.each(item, function(key, item){
 	    		var imageSrc = item["image"];
 	    		var leftPos = item["left"];
@@ -44,7 +52,7 @@ $(document).ready(function () {
     	
     	$("#itemContainer > div").empty();
     	$("#itemContainer > div").append($("<div class='item' style='float: left'></div>"));
-    	$.each(JSON.parse(localStorage.getItem("closet")), function(key, value){
+    	$.each(closet, function(key, value){
     		//if item is not in closet, then add it to store
 			var template = '<div class="item" style="float: left"><img src="' + value["image"] + '" value="' + key +  '" class="img-item" width=40 /></div>';
 			$("#itemContainer > div").append(template);
@@ -54,7 +62,7 @@ $(document).ready(function () {
 
     function createStore(){
     	$("#itemContainerStore > div").empty();
-    	$.each(JSON.parse(localStorage.getItem("store")), function(key, value){
+    	$.each(store, function(key, value){
     		//if item is not in closet, then add it to store
     		if(closet[key] == null){
     			var template = '<div class="item" style="float: left"><span class="pointsRequired">' +  value["points"] + '</span><img src="images/star.png"  class="pointStar"width=30 /><img src="' + value["image"] + '" value="' + key +  '" class="img-item" width=40 /></div>';
@@ -144,45 +152,48 @@ $(document).ready(function () {
     		//if in store, then add it to closet
     		if(selectedItem.parent().parent().is("#itemContainerStore")){
     			var itemName = selectedItem.find(".img-item").attr("value");
-    			var currentPoints = parseInt(localStorage.getItem("points"));
-    			if(currentPoints >= store[itemName]["points"]){
+                //new version
+                if(points >= store[itemName]["points"]){
 
-    				//update points
-		    		localStorage.removeItem("points");
-		    		localStorage.setItem("points", currentPoints - store[itemName]["points"]);
+                    //update points
+                    var updatedPoints = points - store[itemName]["points"];
+                    listOfChildren[currentUser]["points"] = updatedPoints;
+                    localStorage.setItem("listOfChildren", JSON.stringify(listOfChildren));
 
-		    		//update closet
-		    		closet[itemName] = store[itemName];
-		    		localStorage.removeItem("closet");
-		    		localStorage.setItem("closet", JSON.stringify(closet));
+                    //update closet
+                    closet[itemName] = store[itemName];
+                    listOfChildren[currentUser]["closet"] = closet;
 
-		    		//delete item from store
-		    		delete store[itemName];
-		    		localStorage.removeItem("store");
-		    		localStorage.setItem("store", JSON.stringify(store));
+                    //delete item from store
+                    delete store[itemName];
+                    listOfChildren[currentUser]["store"] = store;
 
-		    		$("#points").text(parseInt(localStorage.getItem("points")));
-		    		createCloset();
-		    		createStore();    		
-		    		alert("Congratulations! You have purchased this item!");		
-    			}else{
-    				alert("Sorry! Not enough points to get this item.");
-    			}
+                    //SAVE IT
+                    localStorage.removeItem("listOfChildren");
+                    localStorage.setItem("listOfChildren", JSON.stringify(listOfChildren));
 
-
+                    $("#points").text(updatedPoints);
+                    createCloset();
+                    createStore();          
+                    alert("Congratulations! You have purchased this item!");        
+                }else{
+                    alert("Sorry! Not enough points to get this item.");
+                }
     		}else{
     			//if in closet then finalize it in localStorage
     			alert("Accessory has been added to your pet!");
     			var itemName = selectedItem.find(".img-item").attr("value");
     			var accessoryObj = {};
     			accessoryObj[itemName] = closet[itemName];
-    			localStorage.removeItem("accessory");
-    			localStorage.setItem("accessory", JSON.stringify(accessoryObj));
+                listOfChildren[currentUser]["accessory"] =  accessoryObj;
+    			localStorage.removeItem("listOfChildren");
+    			localStorage.setItem("listOfChildren", JSON.stringify(listOfChildren));
     		}
     	}
     });
-    
-    $("#points").text(parseInt(localStorage.getItem("points")));
+
+    //new version
+    $("#points").text(points);
     attachAccessory();
     createCloset();
     createStore();

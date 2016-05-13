@@ -1,7 +1,14 @@
 $(document).ready(function () {
-	var points = parseInt(localStorage.getItem("points"));
+	//add points to current user
+		//get current user
+		var currentUser = localStorage.getItem("currentUser");
+		//get current User's bio
+		var listOfChildren = JSON.parse(localStorage.getItem("listOfChildren"));
+
+	//new version
+	var points = parseInt(listOfChildren[currentUser]["points"]);
 	$("#points").text(points);
-	
+
 	var currentTask = 0;
 	var selectedFood = {
 	    carrots: {
@@ -66,8 +73,16 @@ $(document).ready(function () {
 	});
 
 	function updatePoints(newPoints){
+
+		/* old version 
 		localStorage.removeItem("points");
 		localStorage.setItem("points", newPoints);
+		$("#points").text(newPoints);
+		*/
+		//new version...
+		listOfChildren[currentUser]["points"] = newPoints;
+		localStorage.removeItem(listOfChildren);
+		localStorage.setItem("listOfChildren", JSON.stringify(listOfChildren));
 		$("#points").text(newPoints);
 	};
 
@@ -144,9 +159,9 @@ $(document).ready(function () {
 		var $content = $("");
 		$('#taskArea').empty();
 		$("#taskArea").append($content);	
-
-		if(localStorage.getItem("message") != null){
-			var $contentTwo = $("<h3>With this message...</h3><div id='messageBox'>" + localStorage.getItem("message") + "</div>");			
+		//this will change later on... due to messages in specific user accounts
+		if(listOfChildren[currentUser]["messages"][0] != null){
+			var $contentTwo = $("<h3>With this message...</h3><div id='messageBox'>" + listOfChildren[currentUser]["messages"][0] + "</div>");			
 			$("#taskArea").append($contentTwo);
 		}
 		$("#approveFooter h3").text("");
@@ -196,7 +211,11 @@ $(document).ready(function () {
 	$('#taskArea').on('keypress', 'textarea', function (e) {
 	  if (e.which == 13) {
 	  	var message = $("textarea").val();
-	    localStorage.setItem("message", message);
+	  	console.log(message);
+	  	listOfChildren[currentUser]["messages"].push(message);
+	  	console.log(listOfChildren[currentUser]["messages"]);
+	  	localStorage.removeItem("listOfChildren");
+	    localStorage.setItem("listOfChildren", JSON.stringify(listOfChildren));
 	    finalizeTask();
 	    return false;    //<---- Add this line
 	  }
@@ -207,10 +226,3 @@ $(document).ready(function () {
 	createTaskNumbers();
 	gatherIngredients();
 });
-
-
-
-// function addStars() {
-//     var stars = JSON.parse(localStorage.getItem('stars')) || 0;
-//     localStorage.setItem('stars', stars + 100);
-// }

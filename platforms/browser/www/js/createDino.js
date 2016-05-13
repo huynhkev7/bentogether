@@ -1,7 +1,20 @@
 $(document).ready(function () {
-    
+
+    //add points to current user
+    //get current user
+    var currentUser = localStorage.getItem("currentUser");
+    //get current User's bio
+    var listOfChildren = JSON.parse(localStorage.getItem("listOfChildren"));
+
+    /* old version
     var points = parseInt(localStorage.getItem("points"));
     $("#points").text(points);
+    */
+
+    //new version
+    var points = parseInt(listOfChildren[currentUser]["points"]);
+    $("#points").text(points);
+    
 
     $("#createMeal").click(function(){
         window.location = "calendar.html";
@@ -19,13 +32,10 @@ $(document).ready(function () {
     });
 
     function attachAccessory(){
-        if(JSON.parse(localStorage.getItem("accessory")) != null){
-            var item = JSON.parse(localStorage.getItem("accessory"));
+        if(listOfChildren[currentUser]["accessory"] != null){
+            var item = listOfChildren[currentUser]["accessory"];
             $.each(item, function(key, item){
-                console.log("attachAccessory");
-                console.log(item);
                 var imageSrc = item["image"];
-                console.log(imageSrc);
                 var leftPos = item["left"];
                 var topPos = item["top"];
                 var width = item["width"];

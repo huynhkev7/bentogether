@@ -1,6 +1,13 @@
 $(document).ready(function () {
 
-    var points = parseInt(localStorage.getItem("points"));
+    //add points to current user
+    //get current user
+    var currentUser = localStorage.getItem("currentUser");
+    //get current User's bio
+    var listOfChildren = JSON.parse(localStorage.getItem("listOfChildren"));
+
+
+    var points = parseInt(listOfChildren[currentUser]["points"]);
     $("#points").text(points);    
     
     var dateSelected = null;
@@ -170,14 +177,18 @@ $(document).ready(function () {
         });
 
         $("#selectDate").click(function(){
-            console.log(JSON.stringify(dateSelected));
-            localStorage.removeItem("dateSelected");
-            localStorage.setItem("dateSelected", JSON.stringify(dateSelected));
+            mealObj = {};
+            mealObj[dateSelected] = {};
+
+            listOfChildren[currentUser]["meals"].push(mealObj);
+
+            localStorage.removeItem("listOfChildren");
+            localStorage.setItem("listOfChildren", JSON.stringify(listOfChildren));
             window.location = "build.html";     
         });
 
         $("#backNav").click(function(){
-            window.location = "menu.html";
+            window.location = "createDino.html";
         });        
     }
 

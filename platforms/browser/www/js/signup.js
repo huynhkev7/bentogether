@@ -9,41 +9,41 @@ $(document).ready(function () {
         //localStorage.setItem("passcode", passcode);
 
         //initial setup...
-        localStorage.setItem("points", 0);
+        // localStorage.setItem("points", 0);
 
 
-        var store = {
-            bow: {
-                image: "images/icons/bow-tie.png",
-                top: "61px",
-                left: "9px",
-                width: "167px",
-                height: "80px",
-                points: 10
+        // var store = {
+        //     bow: {
+        //         image: "images/icons/bow-tie.png",
+        //         top: "61px",
+        //         left: "9px",
+        //         width: "167px",
+        //         height: "80px",
+        //         points: 10
 
-            },
-            hat: {
-                image: "images/icons/hat.png",
-                top: "61px",
-                left: "15px",
-                width: "116px",
-                height: "67px",
-                points: 50              
-            },
-            necklace: {
-                image: "images/icons/necklace.png",
-                top: "71px",
-                left: "30px",
-                width: "167px",
-                height: "100px",
-                points: 100         
-            }
-        };
+        //     },
+        //     hat: {
+        //         image: "images/icons/hat.png",
+        //         top: "61px",
+        //         left: "15px",
+        //         width: "116px",
+        //         height: "67px",
+        //         points: 50              
+        //     },
+        //     necklace: {
+        //         image: "images/icons/necklace.png",
+        //         top: "71px",
+        //         left: "30px",
+        //         width: "167px",
+        //         height: "100px",
+        //         points: 100         
+        //     }
+        // };
 
-        closet = {};
+        // closet = {};
         
-        localStorage.setItem("closet", JSON.stringify(closet));
-        localStorage.setItem("store", JSON.stringify(store));
+        // localStorage.setItem("closet", JSON.stringify(closet));
+        // localStorage.setItem("store", JSON.stringify(store));
 
 
 
