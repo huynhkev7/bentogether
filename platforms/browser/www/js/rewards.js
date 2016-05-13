@@ -130,10 +130,13 @@ $(document).ready(function () {
 
     //highlight/unlight and select item. Test out item on pet
     $("#customizeFooter").on("click", '.item', function(){
-    	if(selectedItem == null){
+        if($(this).find(".img-item").attr("value") == undefined){
+            selectedItem.css("opacity", ".5");
+            selectedItem = null;
+        }else if(selectedItem == null){
     		selectedItem = $(this);
     		selectedItem.css("opacity", ".5");
-    	}else if($(this).find(".img-item").attr("value") && $(this).find(".img-item").attr("value") != selectedItem.find(".img-item").attr("value")){
+    	}else if($(this).find(".img-item").attr("value") != undefined && $(this).find(".img-item").attr("value") != selectedItem.find(".img-item").attr("value")){
     		//clear previous selected item
     		selectedItem.css("opacity", "1");
     		selectedItem = $(this);
@@ -189,12 +192,20 @@ $(document).ready(function () {
     			localStorage.removeItem("listOfChildren");
     			localStorage.setItem("listOfChildren", JSON.stringify(listOfChildren));
     		}
-    	}
+    	}else{
+            alert("Accessory removed!");
+            listOfChildren[currentUser]["accessory"] =  null;
+            localStorage.removeItem("listOfChildren");
+            localStorage.setItem("listOfChildren", JSON.stringify(listOfChildren));            
+        }
     });
 
     //new version
     $("#points").text(points);
     attachAccessory();
+    //pick what color of pet
+    $("#petContainer").append('<img src="' + listOfChildren[currentUser]["pet"] + '" class="img-responsive" width=400 />')    
+
     createCloset();
     createStore();
    	$("#itemContainerStore").css("display", "none");

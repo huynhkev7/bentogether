@@ -184,7 +184,7 @@ $(document).ready(function () {
 
             localStorage.removeItem("listOfChildren");
             localStorage.setItem("listOfChildren", JSON.stringify(listOfChildren));
-            window.location = "build.html";     
+            window.location = "createMeal.html";     
         });
 
         $("#backNav").click(function(){

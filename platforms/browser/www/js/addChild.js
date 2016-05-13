@@ -55,6 +55,7 @@ $(document).ready(function () {
                 meals: [],
                 accessory: null,
                 messages: [],
+                pet: null,
                 gender: $(this).find("#male").hasClass('genderActive') ? "male" : ($(this).find("#female").hasClass("genderActive") ? "female" : null)
             };
             //add allergies...

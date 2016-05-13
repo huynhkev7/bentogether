@@ -94,7 +94,7 @@
             <div id="slidemenu">
                <ul class="nav navbar-nav">
                   <li id="foodList"><a href="#">Food List</a></li>
-                  <li><a href="#settings">Nutrition</a></li>
+                  <li id="nutrition"><a href="#">Nutrition</a></li>
                   <li><a href="#settings">Setting</a></li>
                </ul>
             </div>
@@ -133,6 +133,17 @@
           $(document).ready(function () {
               //add chidreb
 
+
+              function checkPet(key){
+                  //add pet image
+                  if(listOfChildren[key]["pet"] != null){
+                    return listOfChildren[key]["pet"];
+                  }else{
+                    return "images/egg_unhatched.png";
+                  };                
+                
+              };
+
               $("#foodList").click(function(){
                 window.location = "initGrocery.html";
               });
@@ -141,13 +152,17 @@
                 window.location = "addChildren.html";
               });
 
+              $("#nutrition").click(function(){
+                window.location = "nutrition.html";
+              });
+
               //get list of children and add to the DOM
               var listOfChildren = JSON.parse(localStorage.getItem("listOfChildren"));
               console.log(listOfChildren);
               if(listOfChildren != null){
                 console.log("entering");
                 $.each( listOfChildren, function( key, value ) {
-                 var childTemplate = ' <div class="row col-xs-12 col-md-12 col-sm-12"> <div class="col-md-8 col-xs-8 col-sm-8 petChildInfo"> <div class="col-md-7 col-sm-7 col-xs-7 childName">' + key + ' </div><div class="col-md-5 col-sm-5 col-xs-5 pet"><span class="petBackground"></span><img class="pet img-responsive" src="images/dino2_red.png"/></div></div><div class="col-md-4 col-sm-4 col-xs-4 iconContainer" ><i id="arrowRight" style="color: #EA4C98; font-size: 50px" class="icon-chevron-right icon-chevron-right-3" value="' + key + '" ></i> </div></div>';
+                 var childTemplate = ' <div class="row col-xs-12 col-md-12 col-sm-12"> <div class="col-md-8 col-xs-8 col-sm-8 petChildInfo"> <div class="col-md-7 col-sm-7 col-xs-7 childName">' + key + ' </div><div class="col-md-5 col-sm-5 col-xs-5 pet"><span class="petBackground"></span><img class="pet img-responsive" src="' + checkPet(key) +'"/></div></div><div class="col-md-4 col-sm-4 col-xs-4 iconContainer" ><i id="arrowRight" style="color: #EA4C98; font-size: 50px" class="icon-chevron-right icon-chevron-right-3" value="' + key + '" ></i> </div></div>';
 
                  $("#listOfChildren").append(childTemplate);
                 });
@@ -159,7 +174,13 @@
                // var url = "./calendar.html?name=" + encodeURIComponent(name);
                // window.location = url;
                localStorage.setItem("currentUser", name);
-               window.location = "createDino.html";
+
+               if(listOfChildren[name]["pet"] == null){
+                  window.location = "choosePet.html";
+               }else{
+                 window.location = "createDino.html";
+               };
+
             });
 
 

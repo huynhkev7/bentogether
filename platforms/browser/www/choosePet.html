@@ -106,8 +106,8 @@
         margin-right: 10px;
        }
        .img-item {
-        top: 14px;
-        left: 8px;
+        top: 7px;
+        left: 11px;
         position: absolute;
        } 
 
@@ -124,6 +124,9 @@
             top: -5px;
        }
 
+       .img-item {
+          float: left;
+       }
 
       </style>
    </head>
@@ -136,11 +139,11 @@
                  <span class="sr-only">Toggle navigation</span>
                  <img  class="img-responsive" src="images/arrow-point-to-right.png" />
                </a>
-               <a  class="navbar-brand">Customize</a>   
-               <div id="notification">
+               <a  class="navbar-brand">Create Dino</a>   
+               <!--<div id="notification">
                   <div id="points">0</div>
-                  <!--<img src="images/notifications-button.png" style="width: 45px" />  -->
-               </div>                          
+                 
+               </div> -->                         
             </div>
          </div>
       </div>
@@ -150,30 +153,22 @@
          <div class="container" >
           <div class="row" id="petContainer">
             <span id="accessory"></span>
-            <!-- <img src="images/dino2_red.png" class="img-responsive" width=400 /> -->
+            
           </div>     
          </div>
 
           <div class="row" id="customizeFooter" style="border: 1px solid black">
-              <div id="controlGroup">
-                <div id="closet" class="controlActive">Closet</div>
-                <div id="store">Store</div>                  
-              </div>
               <div id="finished">
                   <div id="done">Done</div> 
               </div>             
               <div class="row" id="itemContainer">
                   <div id="buttonContainer">
-                       <div class="item" >
-                           <!--<img src="images/icons/necklace.png" class="img-item" width=40 />-->
+<!--                        <div class="item">
+                           <img src="images/egg_unhatched.png" class="img-item" width=35 />
                        </div>
-                  </div>                
-              </div>
-              <div class="row" id="itemContainerStore">
-                  <div id="buttonContainer">
                        <div class="item" >
-                           <!--<img src="images/icons/necklace.png" class="img-item" width=40 />-->
-                       </div>
+                           <img src="images/red_egg.png" class="img-item" width=35 />
+                       </div>  -->                                           
                   </div>                
               </div>              
           </div>
@@ -185,23 +180,8 @@
       <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
       <!-- Latest compiled and minified JavaScript -->
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> 
-      <script src="js/rewards.js"></script>
+      <script src="js/choosePet.js"></script>
 
 
    </body>
 </html>
-
-
-
-<!-- <!DOCTYPE html>
-    <head>
-        <title>Bentogether</title>
-        <link rel="stylesheet" type="text/css" href="css/style.css">
-    </head>
-    <body>
-        <div id="header">Bentogether</div>
-        <div id="stars">Stars: 0</div>
-        <button id="red">Unlock Red Monster (250 stars)</button>
-        <script src="js/rewards.js"></script>
-    </body>
-</html> -->

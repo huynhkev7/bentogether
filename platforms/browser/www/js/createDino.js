@@ -5,7 +5,7 @@ $(document).ready(function () {
     var currentUser = localStorage.getItem("currentUser");
     //get current User's bio
     var listOfChildren = JSON.parse(localStorage.getItem("listOfChildren"));
-
+    
     /* old version
     var points = parseInt(localStorage.getItem("points"));
     $("#points").text(points);
@@ -55,5 +55,10 @@ $(document).ready(function () {
         }
     };
 
-    attachAccessory();    
+
+    attachAccessory();  
+     
+    //pick what color of pet
+    $("#petContainer").append('<img src="' + listOfChildren[currentUser]["pet"] + '" class="img-responsive" width=400 />')    
+
 });
