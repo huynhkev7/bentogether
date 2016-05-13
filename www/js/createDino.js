@@ -15,7 +15,7 @@ $(document).ready(function () {
         window.location = "rewards.html";
     });
     $("#backNav").click(function(){
-        window.location = "createDino.html";
+        window.location = "menu.html";
     });
 
     function attachAccessory(){
