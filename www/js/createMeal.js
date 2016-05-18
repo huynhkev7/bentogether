@@ -5,7 +5,7 @@ $(document).ready(function () {
     })
 
     $("#selectMeal").click(function(){
-    	window.location = "build.html";
+    	window.location = "buildTwo.html";
     })
     
 });

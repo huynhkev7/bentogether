@@ -2,46 +2,271 @@
 <html>
    <head>
       <title>Bentogether</title>
-      <link rel="stylesheet" type="text/css" href="css/style.css">
       <!--   <link rel="stylesheet" type="text/css" href="css/style.css"> -->
       <link rel="stylesheet" type="text/css" href="css/navbar.css">
       <!-- Latest compiled and minified CSS -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
       <meta charset=utf-8 />
+      <link rel="stylesheet" type="text/css" href="css/navbarStyling.css">
+      <script>
+          window.currentSize = 'small';
+          window.foodItems = [];
+          
+          function allowDrop(e) {
+              e.preventDefault();
+          }
+          
+          function dragApple(e) {
+              e.dataTransfer.setData('food', 'apple');
+          }
+          
+          function dragCarrot(e) {
+              e.dataTransfer.setData('food', 'carrot');
+          }
+          
+          function dragBroccoli(e) {
+              e.dataTransfer.setData('food', 'broccoli');
+          }
+          
+          function dropAA(e) {
+              e.preventDefault();
+              foodItems.push({
+                  food: e.dataTransfer.getData('food'),
+                  size: currentSize,
+                  x: 0,
+                  y: 0
+              });
+              updateUI();
+          }
+          
+         function dropBA(e) {
+              e.preventDefault();
+              foodItems.push({
+                  food: e.dataTransfer.getData('food'),
+                  size: currentSize,
+                  x: 200,
+                  y: 0
+              });
+              updateUI();
+          }
+          
+          function dropCA(e) {
+              e.preventDefault();
+              foodItems.push({
+                  food: e.dataTransfer.getData('food'),
+                  size: currentSize,
+                  x: 400,
+                  y: 0
+              });
+              updateUI();
+          }
+          
+          function dropAB(e) {
+              e.preventDefault();
+              foodItems.push({
+                  food: e.dataTransfer.getData('food'),
+                  size: currentSize,
+                  x: 0,
+                  y: 200
+              });
+              updateUI();
+          }
+          
+          function dropBB(e) {
+              e.preventDefault();
+              foodItems.push({
+                  food: e.dataTransfer.getData('food'),
+                  size: currentSize,
+                  x: 200,
+                  y: 200
+              });
+              updateUI();
+          }
+          
+          function dropCB(e) {
+              e.preventDefault();
+              foodItems.push({
+                  food: e.dataTransfer.getData('food'),
+                  size: currentSize,
+                  x: 400,
+                  y: 200
+              });
+              updateUI();
+          }
+      </script>
    </head>
    <style>
-      .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
-         border: 1px solid #ddd;
+      #lunchbox {
+          outline: 2px solid orange;
+          width: 600px;
+          height: 400px;
+          margin-top: 150px;
+          margin-left: auto;
+          margin-right: auto;
+          position: absolute;
       }
-      .day:hover {
-          background-color: #ddd;
-          -webkit-transition: width 2s; /* Safari */
-          transition: width 2s; 
-          animation: pulse 5s infinite;
-          opacity: .8;
-          cursor: pointer;
-      }     
-
+      
+      #a-a {
+          width: 200px;
+          height: 200px;
+          position: absolute;
+          top: 0;
+          left: 0;
+          border: 1px solid #ddd;
+      }
+      
+      #b-a {
+          width: 200px;
+          height: 200px;
+          position: absolute;
+          top: 0;
+          left: 200px;
+          border: 1px solid #ddd;
+      }
+      
+      #c-a {
+          width: 200px;
+          height: 200px;
+          position: absolute;
+          top: 0;
+          left: 400px;
+          border: 1px solid #ddd;
+      }
+      
+      #a-b {
+          width: 200px;
+          height: 200px;
+          position: absolute;
+          top: 200px;
+          left: 0;
+          border: 1px solid #ddd;
+      }
+      
+      #b-b {
+          width: 200px;
+          height: 200px;
+          position: absolute;
+          top: 200px;
+          left: 200px;
+          border: 1px solid #ddd;
+      }
+      
+      #c-b {
+          width: 200px;
+          height: 200px;
+          position: absolute;
+          top: 200px;
+          left: 400px;
+          border: 1px solid #ddd;
+      }
+      
+      #pick {
+          margin-top: 500px;
+          z-index: 9999;
+      }
+      
+      #tabs {
+          width: 100%;
+          height: 50px;
+      }
+      
+      #tab-small {
+          width: 120px;
+          height: 50px;
+          border: 2px solid cyan;
+          border-top-left-radius: 5px;
+          border-top-right-radius: 5px;
+          display: block;
+          position: relative;
+          top: 2px;
+      }
+      
+      #tab-medium {
+          width: 120px;
+          height: 50px;
+          border: 2px solid cyan;
+          border-top-left-radius: 5px;
+          border-top-right-radius: 5px;
+          margin-left: 130px;
+          display: block;
+          margin-top: -48px;
+          background-repeat: no-repeat;
+      }
+      
+      #tab-large {
+          width: 120px;
+          height: 50px;
+          border: 2px solid cyan;
+          border-top-left-radius: 5px;
+          border-top-right-radius: 5px;
+          margin-left: 260px;
+          display: block;
+          margin-top: -50px;
+      }
+      
+      #foods {
+          width: 100%;
+          background: cyan;
+          height: 150px;
+      }
+      
+      #apple {
+          width: 100px;
+          height: 100px;
+          border: 4px solid purple;
+          background: url('./images/apple.png'), white;
+          background-size: 100px 100px;
+          border-radius: 50px;
+          position: relative;
+          top: 20px;
+          left: 20px;
+      }
+      
+      #carrot {
+          width: 100px;
+          height: 100px;
+          border: 4px solid purple;
+          background: url('./images/carrot.png'), white;
+          background-size: 100px 100px;
+          border-radius: 50px;
+          position: relative;
+          top: -80px;
+          left: 140px;
+      }
+      
+      #broccoli {
+          width: 100px;
+          height: 100px;
+          border: 4px solid purple;
+          background: url('./images/broccoli.png'), white;
+          background-size: 100px 100px;
+          border-radius: 50px;
+          position: relative;
+          top: -180px;
+          left: 260px;
+      }
+      
+      .fooditem {
+          border: 2px solid orange;
+          position: absolute;
+      }
    </style>
    <body>
+
 
       <!-- sliding nav -->
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="slide-nav">
          <div class="container">
             <div class="navbar-header">
-               <a class="navbar-toggle"> 
-               <span class="sr-only">Toggle navigation</span>
-               <span class="icon-bar"></span>
-               <span class="icon-bar"></span>
-               <span class="icon-bar"></span>
+               <a class="navbar-toggle" id="backNav"> 
+                 <span class="sr-only">Toggle navigation</span>
+                 <img  class="img-responsive" src="images/arrow-point-to-right.png" />
                </a>
-               <a class="navbar-brand" href="#">BenTogether</a>
-            </div>
-            <div id="slidemenu">
-               <ul class="nav navbar-nav">
-                  <li id="home" class="active"><a href="#">Home</a></li>
-                  <li><a href="#settings">Settings</a></li>
-               </ul>
+               <a  class="navbar-brand">Create Meal</a>   
+               <div id="notification">
+                  <div>0</div>
+                  <!--<img src="images/notifications-button.png" style="width: 45px" />  -->
+               </div>                          
             </div>
          </div>
       </div>
@@ -49,18 +274,25 @@
       <!--wrap the page content do not style this-->
       <div id="page-content">
          <div class="container" >
-            <h1 class="no-margin-top" id="calendar-title"></h1>
-                <div id="header">Bentogether</div>
-                Click foods at the bottom to add them to your plate.
-                <div><img id="monster" src="images/egg_unhatched.png"></div>
-                <div id="chosen">
-                    <div id="chosen1"></div>
-                    <div id="chosen2"></div>
-                    <div id="chosen3"></div>
-                </div>
-                <div id="foods">
-                </div>
-                <script src="js/build.js"></script>
+             <div id="lunchbox">
+                 <div id="a-a" ondragover="allowDrop(event)" ondrop="dropAA(event)"></div>
+                 <div id="b-a" ondragover="allowDrop(event)" ondrop="dropBA(event)"></div>
+                 <div id="c-a" ondragover="allowDrop(event)" ondrop="dropCA(event)"></div>
+                 <div id="a-b" ondragover="allowDrop(event)" ondrop="dropAB(event)"></div>
+                 <div id="b-b" ondragover="allowDrop(event)" ondrop="dropBB(event)"></div>
+                 <div id="c-b" ondragover="allowDrop(event)" ondrop="dropCB(event)"></div>
+                 <div id="items"></div>
+             <div id="pick">
+             <div id="tabs">
+                 <span id="tab-small">small</span><span id="tab-medium">medium</span><span id="tab-large">large</span>
+             </div>
+             <div id="foods">
+                 <div id="apple" draggable="true" ondragstart="dragApple(event)">apple</div>
+                 <div id="carrot" draggable="true" ondragstart="dragCarrot(event)">carrot</div>
+                 <div id="broccoli" draggable="true" ondragstart="dragBroccoli(event)">broccoli</div>
+             </div>
+             </div>
+             </div>
          </div>
 
 
@@ -72,8 +304,91 @@
       <!-- Latest compiled and minified JavaScript -->
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> 
       <script src="js/script.js"></script>
-      <script src="js/calendar.js"></script>
-      <script src="js/navbar.js"></script>
+      <script>                    
 
+          $("#backNav").click(function(){
+              window.location = "createMeal.html";
+          });
+
+          document.getElementById('tab-small').onclick = function() {
+              currentSize = 'small';
+              updateUI()
+          };
+          
+          document.getElementById('tab-medium').onclick = function() {
+              currentSize = 'medium';
+              updateUI();
+          };
+          
+          document.getElementById('tab-large').onclick = function() {
+              currentSize = 'large';
+              updateUI();
+          };
+          
+          updateUI()
+          
+          function updateUI() {
+              document.getElementById('tab-small').style.background = 'url(\'./images/small.png\') 32px 0 / 50px 50px no-repeat';
+              document.getElementById('tab-medium').style.background = 'url(\'./images/medium.png\') 32px 0 / 50px 50px no-repeat';
+              document.getElementById('tab-large').style.background = 'url(\'./images/large.png\') 32px 0 / 50px 50px no-repeat';
+              
+              if (currentSize == 'small') {
+                document.getElementById('tab-small').style.background = 'url(\'./images/small (1).png\') cyan 32px 0 / 50px 50px no-repeat';
+              }
+              
+              if (currentSize == 'medium') {
+                document.getElementById('tab-medium').style.background = 'url(\'./images/medium (1).png\') cyan 32px 0 / 50px 50px no-repeat';
+              }
+              
+              if (currentSize == 'large') {
+                document.getElementById('tab-large').style.background = 'url(\'./images/large (1).png\') cyan 32px 0 / 50px 50px no-repeat';
+              }
+              
+              document.getElementById('items').innerHTML = '';
+              
+              for (var i = 0; i < foodItems.length; i++) {
+                  var item = foodItems[i];
+                                    
+                  var element = document.createElement('div');
+                  element.className = 'fooditem';
+                  
+                  if (item.size == 'small') {
+                      element.style.width = '200px';
+                      element.style.height = '200px';
+                  }
+                  
+                  if (item.size == 'medium') {
+                      element.style.width = '200px';
+                      element.style.height = '400px';
+                  }
+                  
+                  if (item.size == 'large') {
+                      element.style.width = '400px';
+                      element.style.height = '400px';
+                  }
+                  
+                  element.style.left = item.x + 'px';
+                  element.style.top = item.y + 'px';
+                  
+                  element.style.background = 'url(\'./images/' + item.food + '.png\') white 0 0 / 150px 150px no-repeat';
+                  
+                  if (item.size == 'small') {
+                      element.style.backgroundPosition = '25px 25px';
+                  }
+                  
+                  if (item.size == 'medium') {
+                      element.style.backgroundPosition = '25px 125px';
+                  }
+                  
+                  if (item.size == 'large') {
+                      element.style.backgroundPosition = '125px 125px';
+                  }
+                  
+                  document.getElementById('items').appendChild(element);
+              }
+          }
+      </script>
+      <script src="js/navbar.js"></script>
+      <!-- <script src="js/build.js"></script> -->
    </body>
 </html>

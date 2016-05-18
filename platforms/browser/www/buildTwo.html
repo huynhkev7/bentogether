@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Bentogether</title>
+      <!--   <link rel="stylesheet" type="text/css" href="css/style.css"> -->
+      <link rel="stylesheet" type="text/css" href="css/navbar.css">    
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
+
+
+      <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+
+
+      <meta charset=utf-8 />
+      <link rel="stylesheet" type="text/css" href="css/navbarStyling.css">  
+      <style>
+        #notification {
+          background-color: white;
+          height: 40px;
+          width: 50px;
+          border-radius: 5px;
+        }
+        #notification div {
+          text-align: center;
+          font-size: 20pt;
+        }
+
+        .row {
+          margin-top: 5px;
+          margin-left: 0px;
+          margin-right: 0px;
+        }
+
+        #customizeFooter {
+            background-color: #48C8F3;
+            /*padding: 0px 20px 20px 20px;*/
+            bottom: 0px;    
+            /* uncomment for it to work in IOS */
+            position: fixed;
+            width: 100%;
+            margin: 0px;
+            height: 75px;
+        }
+        #customizeFooter h3 {
+            padding: 10px;
+            color: white;
+        }   
+
+        #customizeFooter button {
+            background-color: white;
+            color: #EA4C98;
+        }  
+       
+       #buttonContainer {
+            width: 500px;
+            /*overflow: auto;*/
+       }
+
+       #itemContainer, #itemContainerStore {
+            /*overflow-x: scroll;*/
+       }
+
+       #medium, #small, #large {
+            width: 74px;
+            background-color: white;
+            float: left;
+            margin: 5px;
+            text-align: center;
+            border-radius: 5px 5px 0px 0px;
+            border-top: 1px solid #48C8F3;
+            border-right: 1px solid #48C8F3;
+            border-left: 1px solid #48C8F3;            
+       }
+
+       #done {
+            width: 74px;
+            background-color: #F26865;
+            float: right;
+            margin: 5px;
+            text-align: center;
+            border-radius: 5px 5px 0px 0px;
+            border-top: 1px solid #F26865;
+            border-right: 1px solid #F26865;
+            border-left: 1px solid #F26865;   
+            color: white;
+       }
+
+       #controlGroup, #finished {
+        position: absolute;
+        top: -24px;
+       }
+
+       #finished {
+        right: 0px;
+       }
+
+       .item {
+        height: 60px;
+        width: 60px;
+        border-radius: 75px;
+        border: 3px solid #F26865;
+        background-color: white;
+        position: relative;
+        float: left;
+        margin-right: 10px;
+       }
+       .img-item {
+        top: 14px;
+        left: 8px;
+        position: absolute;
+       } 
+
+       .pointsRequired {
+            position: absolute;
+            top: 4px;
+            right: -8px;
+            z-index: 1;
+            font-size: 7pt;
+       }
+       .pointStar {
+            position: absolute;
+            right: -18px;
+            top: -5px;
+       }
+
+       .pod {
+        border: 1px solid red;
+        height: 100px;
+        height: 100px;
+       }
+      </style>
+   </head>
+   <body>
+      <!-- sliding nav -->
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="slide-nav">
+         <div class="container">
+            <div class="navbar-header">
+               <a class="navbar-toggle" id="backNav"> 
+                 <span class="sr-only">Toggle navigation</span>
+                 <img  class="img-responsive" src="images/arrow-point-to-right.png" />
+               </a>
+               <a  class="navbar-brand">Create Meal</a>   
+               <div id="notification">
+                  <div id="points">0</div>
+                  <!--<img src="images/notifications-button.png" style="width: 45px" />  -->
+               </div>                          
+            </div>
+         </div>
+      </div>
+
+      <!--wrap the page content do not style this-->
+      <div id="page-content">
+         <div class="container" >
+          <div class="row" id="petContainer">
+            <button type="button" id="login" class="btn btn-danger" style="left: 80%; position: relative; margin-bottom: 1em">Done</button>
+            <span id="accessory"></span>
+            <!-- <img src="images/dino2_red.png" class="img-responsive" width=400 /> -->
+            <div class="container" id="bentoBox" >
+                <div class="col-xs-4 col-sm-4 col-md-4 pod dropzone topRow" id="pod_0"></div>
+                <div class="col-xs-4 col-sm-4 col-md-4 pod dropzone topRow" id="pod_1"></div>
+                <div class="col-xs-4 col-sm-4 col-md-4 pod dropzone topRow" id="pod_2"></div>
+                <div class="col-xs-4 col-sm-4 col-md-4 pod dropzone bottomRow" id="pod_3"></div>
+                <div class="col-xs-4 col-sm-4 col-md-4 pod dropzone bottomRow" id="pod_4"></div>
+                <div class="col-xs-4 col-sm-4 col-md-4 pod dropzone bottomRow" id="pod_5"></div>
+              </div>
+                
+            </div>
+          </div>     
+         </div>
+
+          <div class="row" id="customizeFooter" style="border: 1px solid black">           
+              <div id="controlGroup">
+                <div id="small" value="small" class="controls">Small</div>
+                <div id="medium" value="medium" class="controls">Medium</div>         
+                <div id="large" value="large" class="controls" >Large</div>         
+
+              </div>       
+              <div class="row" id="itemContainer">
+                  <div id="buttonContainer">
+                 </div>                
+              </div>           
+          </div>
+         <!-- /.container -->  
+      </div>
+      <!-- /#page-content -->
+
+      <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+      <!-- Latest compiled and minified JavaScript -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> 
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/interact.js/1.2.4/interact.min.js"></script>
+      <script src="js/buildTwo.js"></script>
+
+
+   </body>
+</html>
+

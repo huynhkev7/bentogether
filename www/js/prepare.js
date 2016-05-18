@@ -10,39 +10,44 @@ $(document).ready(function () {
 	$("#points").text(points);
 
 	var currentTask = 0;
-	var selectedFood = {
-	    carrots: {
-	        nutrients: 100,
-	        carbohydrates: 0,
-	        sugar: 0,
-	        toggled: false,
-	        image: "images/foods/carrot.png"
-	    },
-	    apple: {
-	        nutrients: 0,
-	        carbohydrates: 0,
-	        sugar: 100,
-	        toggled: false,
-	        image: "images/foods/apple.png"
-	    },
-	    sandwhich: {
-	        nutrients: 50,
-	        carbohydrates: 50,
-	        sugar: 0,
-	        toggled: false,
-	        image: "images/foods/sandwich.png"
-	    },
-	    cookies: {
-	        nutrients: 0,
-	        carbohydrates: 10,
-	        sugar: 100,
-	        toggled: false,
-	        image: "images/foods/cookies.png"
-	    }	
-	};
+	// var selectedFood = {
+	//     carrots: {
+	//         nutrients: 100,
+	//         carbohydrates: 0,
+	//         sugar: 0,
+	//         toggled: false,
+	//         image: "images/foods/carrot.png"
+	//     },
+	//     apple: {
+	//         nutrients: 0,
+	//         carbohydrates: 0,
+	//         sugar: 100,
+	//         toggled: false,
+	//         image: "images/foods/apple.png"
+	//     },
+	//     sandwhich: {
+	//         nutrients: 50,
+	//         carbohydrates: 50,
+	//         sugar: 0,
+	//         toggled: false,
+	//         image: "images/foods/sandwich.png"
+	//     },
+	//     cookies: {
+	//         nutrients: 0,
+	//         carbohydrates: 10,
+	//         sugar: 100,
+	//         toggled: false,
+	//         image: "images/foods/cookies.png"
+	//     }	
+	// };
 
+	var selectedFood = null;
+	$.each(listOfChildren[currentUser]["meals"], function(key, value){
+		selectedFood = value;
+	});
+	console.log(selectedFood);
 	var tasks = {
-		sandwhich: {
+		sandwich: {
 			task: "create sandwhich",
 			points: 20,
 			image: "images/foods/sandwich.png"	
@@ -61,6 +66,11 @@ $(document).ready(function () {
 			task: "cut carrots",
 			points: 30,
 			image: "images/foods/carrot.png"	
+		},
+		sushi: {
+			task: "wrap the sushi",
+			points: 100,
+			image: "images/foods/sushi.png"
 		}	
 	};
 
@@ -94,6 +104,7 @@ $(document).ready(function () {
 		//create task numbers for making food...
 		$.each(selectedFood, function(key, value){
 			//if there is a task for the current food item then create a task number...
+			console.log(key);
 			if(tasks[key]["task"] != null){
 				console.log(tasks[key]["task"]);
 				selectedTasks[key] = tasks[key];
@@ -112,7 +123,7 @@ $(document).ready(function () {
 		//create the list of ingredients
 		var $unorderedListElement = $("<ul class='list-unstyled'></ul>");
 		$.each(selectedFood, function(key, value){
-			$liElement = $('<li><img src=' + value["image"]  + ' width=60/>&nbsp;&nbsp;' + key + '</li>');
+			$liElement = $('<li><img src=' + value["imageSrc"]  + ' width=60/>&nbsp;&nbsp;' + key + '</li>');
 			$unorderedListElement.append($liElement);
 		});
 		$("#taskArea").append($unorderedListElement);

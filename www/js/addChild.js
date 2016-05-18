@@ -52,7 +52,7 @@ $(document).ready(function () {
                 points: 0,
                 store: store,
                 closet: closet,
-                meals: [],
+                meals: {},
                 accessory: null,
                 messages: [],
                 pet: null,

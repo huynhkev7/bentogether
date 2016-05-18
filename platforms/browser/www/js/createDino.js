@@ -21,7 +21,12 @@ $(document).ready(function () {
     });
 
     $("#prepareMeal").click(function(){
-        window.location = "prepare.html";
+        if($.isEmptyObject(listOfChildren[currentUser]["meals"])){
+            alert("Please create meal first!");
+        }else{
+            window.location = "prepare.html";
+        }
+
     });
 
     $("#customize").click(function(){

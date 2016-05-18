@@ -8,35 +8,35 @@ $(document).ready(function () {
 		        carbohydrates: 0,
 		        sugar: 0,
 		        toggled: false,
-		        imageSrc : "https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txtclr=ffffff&txt=400%C3%97300&w=400&h=400&fm=png"
+		        imageSrc : "images/foods/carrot.png"
 		    },
 		    soda: {
 		        nutrients: 0,
 		        carbohydrates: 0,
 		        sugar: 100,
 		        toggled: false,
-		        imageSrc : "https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txtclr=ffffff&txt=400%C3%97300&w=400&h=400&fm=png"
+		        imageSrc : "http://www.clipartlord.com/wp-content/uploads/2013/12/soda-can.png"
 		    },
-		    bread: {
+		    sandwich: {
 		        nutrients: 50,
 		        carbohydrates: 50,
 		        sugar: 0,
 		        toggled: false,
-		        imageSrc: "https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txtclr=ffffff&txt=400%C3%97300&w=400&h=400&fm=png"
+		        imageSrc: "images/foods/sandwich.png"
 		    },
 		    cookies: {
 		        nutrients: 0,
 		        carbohydrates: 10,
 		        sugar: 100,
 		        toggled: false,
-		        imageSrc: "https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txtclr=ffffff&txt=400%C3%97300&w=400&h=400&fm=png"
+		        imageSrc: "images/foods/cookies.png"
 		    },
-		    fish: {
+		    sushi: {
 		        nutrients: 75,
 		        carbohydrates: 75,
 		        sugar: 0,
 		        toggled: false,
-		        imageSrc: "https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txtclr=ffffff&txt=400%C3%97300&w=400&h=400&fm=png"
+		        imageSrc: "images/foods/sushi.png"
 		    }
 		};	
 	};

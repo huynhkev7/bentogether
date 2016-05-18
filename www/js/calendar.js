@@ -177,10 +177,10 @@ $(document).ready(function () {
         });
 
         $("#selectDate").click(function(){
-            mealObj = {};
-            mealObj[dateSelected] = {};
+            // mealObj = {};
+            // mealObj[dateSelected] = {};
 
-            listOfChildren[currentUser]["meals"].push(mealObj);
+            listOfChildren[currentUser]["meals"][dateSelected] = {};
 
             localStorage.removeItem("listOfChildren");
             localStorage.setItem("listOfChildren", JSON.stringify(listOfChildren));

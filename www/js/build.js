@@ -31,6 +31,12 @@ var foods = {
     }
 };
 
+
+$("#backNav").click(function(){
+    console.lo
+    window.location = "createMeal.html";
+});
+
 var list = document.getElementById('foods');
 Object.keys(foods).forEach(function(food) {
     var button = document.createElement('button');
