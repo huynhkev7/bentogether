@@ -82,7 +82,7 @@ $(document).ready(function () {
         if(foods[foodName] != null){
         	foods[foodName].toggled = !foods[foodName].toggled;
         }else{
-        	alert("no matching food");
+        	alert("Sorry! Food selected not in database...");
         };
         if($(this).hasClass("circleActive")){
             $(this).removeClass("circleActive");

@@ -71,7 +71,12 @@ $(document).ready(function () {
 			task: "wrap the sushi",
 			points: 100,
 			image: "images/foods/sushi.png"
-		}	
+		},	
+		soda: {
+			task: null,
+			points: null,
+			image: "http://www.clipartlord.com/wp-content/uploads/2013/12/soda-can.png"			
+		}
 	};
 
 	var selectedTasks = {
