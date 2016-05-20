@@ -98,56 +98,68 @@ $(document).ready(function () {
 
   function addToActiveDropZones(currentDropzone, draggableElement){
     var found = true;
+    var isFound = false;
+    //console.log(activeDropZones);
     //validating...
     if($.isEmptyObject(activeDropZones)){
-      console.log("enteirngfFirst");
+      //console.log("enteirngfFirst");
       $.each(currentDropzone, function(key,value){
         activeDropZones[key] = value;
-        console.log(key);
+        //console.log(key);
         updateUI(key, value, draggableElement);
       });
     }else{
+      //check key to all keys
       $.each(currentDropzone, function(key, value){
-        //check current key to all keys
-        if(!(key in activeDropZones)){
-          if(value.length == 0){
-            found = false;
-          }else{
-            console.log("checking key to key...");
-            $.each(activeDropZones, function(activeKey, activeValue){
-              console.log("checking main to neighbors..");
-              //check main key to all neighbors, if not in then continue
-              console.log(($.inArray( key , activeValue )));
-              console.log(($.inArray( activeKey , value )));
-              if(($.inArray( key , activeValue )) == -1 && ($.inArray( activeKey , value ) == -1)){
-                //check neighbor to neighbor, if not in then notFound is true
-               if(activeValue.length == 0){
-                found = false;
-               }else{
-                 $.each(value, function(index, currentValue){
-                  // console.log("checking neighbors to neighbors");
-                  // console.log("current value: " + currentValue);
-                  // console.log("comparing to array: ");
-                  // console.log(activeValue);
-                  if(($.inArray(currentValue, activeValue)) == -1){
-                    found = false;
-                  }else{
-                    found = true;
-                  }
-                 });
-               }
-              }else{
-                //alert("did not pass!");
-                found = true;
-                //console.log("found is: " + found);
-              }
-            });
-          }
-
-        }
+        if(key in activeDropZones){
+          console.log("main key is an active key");
+          isFound = true;
+        };
       });
+      
+       $.each(currentDropzone, function(key, value){
+        $.each(activeDropZones, function(activeKey, activeValue){
+          //check key to all neighbors of each key
+          // console.log(key + " vs " + activeValue);
+          // console.log(currentDropzone);
+          if($.inArray( key , activeValue ) > -1){
+            console.log("main key is an active neibhor");
+            isFound = true;
+          }
+        });
+      });
+
+       $.each(currentDropzone, function(key, value){
+        $.each(value, function(index, mainValue){
+          //check neighbors to all neighbors of each key
+          $.each(activeDropZones, function(activeKey, activeValue){
+            //console.log(mainValue + " vs " + activeValue);
+            console.log(value);
+            console.log("vs");
+            console.log(activeValue);
+            if($.inArray( mainValue , activeValue ) > -1){
+              console.log("main neighbor is an active neibhor");
+              isFound = true;
+            }
+          });
+        });
+      });           
+
+       //check neighbor key to main neighbor 
+
+       $.each(activeDropZones, function(key, value){
+        $.each(currentDropzone, function(mainKey, mainValue){
+  
+            if($.inArray( key , mainValue ) > -1){
+              console.log("neighbor key is an main neibhor");
+              isFound = true;
+            }
+        });
+      });    
+
       //if not found then add it to activeDrop
-      if(!found){
+      console.log("is found is : " + isFound);
+      if(!isFound){
         $.each(currentDropzone, function(key,value){
           activeDropZones[key] = value;
           updateUI(key, value,draggableElement);
@@ -160,8 +172,8 @@ $(document).ready(function () {
 
     };
   
-    console.log("activeDrop");
-    console.log(activeDropZones);
+    //console.log("activeDrop");
+    //console.log(activeDropZones);
   };
   function topBottomNeighbor($droppedElement, rowType){
     //if neighbor is in first row... check bottom
@@ -173,7 +185,7 @@ $(document).ready(function () {
       var neighborIndex = $droppedElement.index() - 3;
     };
     var neighborElement = $($(".pod").get(neighborIndex)).attr("id");
-    console.log(neighborElement);
+    //console.log(neighborElement);
     //alert("neighbor selected is: "  + neighborIndex);
     return neighborElement;
   };
@@ -198,7 +210,7 @@ $(document).ready(function () {
   };
 
   function getDiagonals(topBottomElement , oppositeRowType){
-    console.log("getting diagonals from element " + topBottomElement);
+    //console.log("getting diagonals from element " + topBottomElement);
     var $topBottomElement = $(topBottomElement);
     var diagonals = getSideNeighbors($topBottomElement, oppositeRowType);
     return {
@@ -225,7 +237,7 @@ $(document).ready(function () {
 
       },
       'onend' : function (event) {
-        console.log('Draggable: ', event);
+        //console.log('Draggable: ', event);
         //console.log(event);
         currentClonedElement.remove();
       }
@@ -247,7 +259,7 @@ $(document).ready(function () {
           
         // insert the clone to the page
         // TODO: position the clone appropriately
-        console.log($(original).position());
+        //console.log($(original).position());
         var originPosition = $(original).position();
 
         $("#buttonContainer").append($(clone));
@@ -394,10 +406,10 @@ interact('.dropzone').dropzone({
           return txt;
       }      
 
-      console.log("food Approved are...");
-      console.log(foodsApproved);
+      // console.log("food Approved are...");
+      // console.log(foodsApproved);
       var clone = document.getHTML(document.getElementById("bentoBox").cloneNode(true), true);
-      console.log(clone);
+      // console.log(clone);
       listOfChildren[currentUser]["pendingMeal"] = clone;
 
 
@@ -406,7 +418,7 @@ interact('.dropzone').dropzone({
       localStorage.removeItem("listOfChildren");
       localStorage.setItem("listOfChildren", JSON.stringify(listOfChildren));
 
-      console.log(listOfChildren);
+      // console.log(listOfChildren);
       window.location = "approve.html";
     });
     //new version

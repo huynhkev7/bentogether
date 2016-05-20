@@ -170,17 +170,20 @@
               
               //redirect to calendar page for child
               $("#listOfChildren").on('click', '#arrowRight', function() {
-               var name = $(this).attr("value");
-               // var url = "./calendar.html?name=" + encodeURIComponent(name);
-               // window.location = url;
-               localStorage.setItem("currentUser", name);
+                if(JSON.parse(localStorage.getItem("currentGroceries")) == null){
+                  alert("Please select common household groceries before proceeding.");
+                }else{
+                 var name = $(this).attr("value");
+                 // var url = "./calendar.html?name=" + encodeURIComponent(name);
+                 // window.location = url;
+                 localStorage.setItem("currentUser", name);
 
-               if(listOfChildren[name]["pet"] == null){
-                  window.location = "choosePet.html";
-               }else{
-                 window.location = "createDino.html";
-               };
-
+                 if(listOfChildren[name]["pet"] == null){
+                    window.location = "choosePet.html";
+                 }else{
+                   window.location = "createDino.html";
+                 };
+                }
             });
 
 
