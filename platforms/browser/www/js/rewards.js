@@ -156,10 +156,10 @@ $(document).ready(function () {
     		if(selectedItem.parent().parent().is("#itemContainerStore")){
     			var itemName = selectedItem.find(".img-item").attr("value");
                 //new version
-                if(points >= store[itemName]["points"]){
+                if(parseInt(JSON.parse(localStorage.getItem("listOfChildren"))[currentUser]["points"]) >= store[itemName]["points"]){
 
                     //update points
-                    var updatedPoints = points - store[itemName]["points"];
+                    var updatedPoints = parseInt(JSON.parse(localStorage.getItem("listOfChildren"))[currentUser]["points"]) - store[itemName]["points"];
                     listOfChildren[currentUser]["points"] = updatedPoints;
                     localStorage.setItem("listOfChildren", JSON.stringify(listOfChildren));
 
