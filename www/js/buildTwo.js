@@ -110,35 +110,40 @@ $(document).ready(function () {
       $.each(currentDropzone, function(key, value){
         //check current key to all keys
         if(!(key in activeDropZones)){
-          console.log("checking key to key...");
-          $.each(activeDropZones, function(activeKey, activeValue){
-            console.log("checking main to neighbors..");
-            //check main key to all neighbors, if not in then continue
-            console.log(($.inArray( key , activeValue )));
-            console.log(($.inArray( activeKey , value )));
-            if(($.inArray( key , activeValue )) == -1 && ($.inArray( activeKey , value ) == -1)){
-              //check neighbor to neighbor, if not in then notFound is true
-             if(activeValue.length == 0){
-              found = false;
-             }else{
-               $.each(value, function(index, currentValue){
-                // console.log("checking neighbors to neighbors");
-                // console.log("current value: " + currentValue);
-                // console.log("comparing to array: ");
-                // console.log(activeValue);
-                if(($.inArray(currentValue, activeValue)) == -1){
-                  found = false;
-                }else{
-                  found = true;
-                }
-               });
-             }
-            }else{
-              //alert("did not pass!");
-              found = true;
-              //console.log("found is: " + found);
-            }
-          });
+          if(value.length == 0){
+            found = false;
+          }else{
+            console.log("checking key to key...");
+            $.each(activeDropZones, function(activeKey, activeValue){
+              console.log("checking main to neighbors..");
+              //check main key to all neighbors, if not in then continue
+              console.log(($.inArray( key , activeValue )));
+              console.log(($.inArray( activeKey , value )));
+              if(($.inArray( key , activeValue )) == -1 && ($.inArray( activeKey , value ) == -1)){
+                //check neighbor to neighbor, if not in then notFound is true
+               if(activeValue.length == 0){
+                found = false;
+               }else{
+                 $.each(value, function(index, currentValue){
+                  // console.log("checking neighbors to neighbors");
+                  // console.log("current value: " + currentValue);
+                  // console.log("comparing to array: ");
+                  // console.log(activeValue);
+                  if(($.inArray(currentValue, activeValue)) == -1){
+                    found = false;
+                  }else{
+                    found = true;
+                  }
+                 });
+               }
+              }else{
+                //alert("did not pass!");
+                found = true;
+                //console.log("found is: " + found);
+              }
+            });
+          }
+
         }
       });
       //if not found then add it to activeDrop
