@@ -5,6 +5,8 @@ $(document).ready(function () {
     //get current user
     var currentUser = localStorage.getItem("currentUser");
     //get current User's bio
+    var currentClonedElement = null;
+
     var listOfChildren = JSON.parse(localStorage.getItem("listOfChildren"));
 
   var activeDropZones  = {
@@ -218,9 +220,9 @@ $(document).ready(function () {
 
       },
       'onend' : function (event) {
-
         console.log('Draggable: ', event);
-
+        //console.log(event);
+        currentClonedElement.remove();
       }
     }).on('move', function (event) {
 
@@ -250,6 +252,7 @@ $(document).ready(function () {
           "left": originPosition["left"]
          });
         // start a drag interaction targeting the clone
+        currentClonedElement = $(clone);
         interaction.start({ name: 'drag' }, event.interactable, clone);
 
       } else {
@@ -373,19 +376,33 @@ interact('.dropzone').dropzone({
         foodsApproved[foodName] = foodInfo;
       });
 
+      document.getHTML= function(who, deep){
+          if(!who || !who.tagName) return '';
+          var txt, ax, el= document.createElement("div");
+          el.appendChild(who.cloneNode(false));
+          txt= el.innerHTML;
+          if(deep){
+              ax= txt.indexOf('>')+1;
+              txt= txt.substring(0, ax)+who.innerHTML+ txt.substring(ax);
+          }
+          el= null;
+          return txt;
+      }      
+
       console.log("food Approved are...");
       console.log(foodsApproved);
+      var clone = document.getHTML(document.getElementById("bentoBox").cloneNode(true), true);
+      console.log(clone);
+      listOfChildren[currentUser]["pendingMeal"] = clone;
+
 
       //get meal date and add meal
-      $.each(listOfChildren[currentUser]["meals"], function(key, value){
-        listOfChildren[currentUser]["meals"][key] = foodsApproved;
-        localStorage.removeItem("listOfChildren");
-        localStorage.setItem("listOfChildren", JSON.stringify(listOfChildren));
-
-      });
+      listOfChildren[currentUser]["validateMeal"] = foodsApproved;
+      localStorage.removeItem("listOfChildren");
+      localStorage.setItem("listOfChildren", JSON.stringify(listOfChildren));
 
       console.log(listOfChildren);
-      window.location = "createDino.html";
+      window.location = "approve.html";
     });
     //new version
     $("#points").text(points);

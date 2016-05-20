@@ -7,6 +7,10 @@ $(document).ready(function () {
 		        nutrients: 100,
 		        carbohydrates: 0,
 		        sugar: 0,
+		        sodium: 80,
+		        fat: 10,
+		        protein: 13,
+		        calories: 150,
 		        toggled: false,
 		        imageSrc : "images/foods/carrot.png"
 		    },
@@ -14,6 +18,10 @@ $(document).ready(function () {
 		        nutrients: 0,
 		        carbohydrates: 0,
 		        sugar: 100,
+		        sodium: 50,
+		        fat: 5,
+		        protein: 2,
+		        calories: 80,		        
 		        toggled: false,
 		        imageSrc : "http://www.clipartlord.com/wp-content/uploads/2013/12/soda-can.png"
 		    },
@@ -21,6 +29,10 @@ $(document).ready(function () {
 		        nutrients: 50,
 		        carbohydrates: 50,
 		        sugar: 0,
+		        sodium: 20,
+		        fat: 55,
+		        protein: 10,
+		        calories: 400,		        
 		        toggled: false,
 		        imageSrc: "images/foods/sandwich.png"
 		    },
@@ -28,6 +40,10 @@ $(document).ready(function () {
 		        nutrients: 0,
 		        carbohydrates: 10,
 		        sugar: 100,
+		        sodium: 30,
+		        fat: 50,
+		        protein: 4,
+		        calories: 200,		        
 		        toggled: false,
 		        imageSrc: "images/foods/cookies.png"
 		    },
@@ -35,6 +51,10 @@ $(document).ready(function () {
 		        nutrients: 75,
 		        carbohydrates: 75,
 		        sugar: 0,
+		        sodium: 200,
+		        fat: 25,
+		        protein: 20,
+		        calories: 150,		        
 		        toggled: false,
 		        imageSrc: "images/foods/sushi.png"
 		    }

@@ -53,6 +53,8 @@ $(document).ready(function () {
                 store: store,
                 closet: closet,
                 meals: {},
+                validateMeal: null,
+                pendingMeal: null,
                 accessory: null,
                 messages: [],
                 pet: null,

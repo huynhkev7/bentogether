@@ -135,7 +135,10 @@ $(document).ready(function () {
 		//create the list of ingredients
 		var $content = $("<div class='col-xs-12'><img src='images/bentogether_screen_design.png' width=300 /></div>");
 		$('#taskArea').empty();
-		$("#taskArea").append($content);
+		//$("#taskArea").append($content);
+
+	    var clone = listOfChildren[currentUser]["pendingMeal"];
+	    $("#taskArea").append(clone);		
 		$("#pointStar").text(5);
 	}
 

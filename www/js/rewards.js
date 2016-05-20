@@ -178,7 +178,7 @@ $(document).ready(function () {
                     $("#points").text(updatedPoints);
                     createCloset();
                     createStore();          
-                    alert("Congratulations! You have purchased this item!");        
+                    alert("Congratulations! You have purchased this item! Go to your closet to add it on your pet.");        
                 }else{
                     alert("Sorry! Not enough points to get this item.");
                 }
