@@ -9,17 +9,15 @@ $(document).ready(function () {
     //new version
     var points = parseInt(listOfChildren[currentUser]["points"]);
 
-
+    var nutritionTable = {
+        calories: 0,
+        fat: 0,
+        sodium: 0,
+        carbs: 0,
+        sugars: 0,
+        protein: 0
+    };
     function createNutritionTable(){
-        var nutritionTable = {
-            calories: 0,
-            fat: 0,
-            sodium: 0,
-            carbs: 0,
-            sugars: 0,
-            protein: 0
-        };
-
         $.each(listOfChildren[currentUser]["validateMeal"], function(foodName, foodValue){
             var carbs = foodValue["carbohydrates"]
                 sugars = foodValue["sugar"]
@@ -44,10 +42,12 @@ $(document).ready(function () {
             $("#nutrition").append("<div class='col-xs-6 col-sm-6 col-md-6 nutritionLabel'>" + key + "</div><div class='col-xs-6 col-sm-6 col-md-6 nutritionValue'>" + value + "g</div>");
         }
        });
+
+       createGraph();
     };
 
     $("#backNav").click(function(){
-        window.location = "createDino.html";
+        window.location = "buildTwo.html";
     });
 
     $("#reject").click(function(){
@@ -63,6 +63,37 @@ $(document).ready(function () {
       });
       window.location = "createDino.html";
     });
+
+
+    //chart.js stuff
+    function createGraph(){
+        var ctx = document.getElementById("myChart");
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["Fat", "Sodium", "Carbohydrates", "Sugar", "Protein"],
+                datasets: [{
+                    label: 'Nutritional Value (Grams)',
+                    data: [nutritionTable["fat"], nutritionTable["sodium"] / 1000, nutritionTable["carbs"], nutritionTable["sugars"], nutritionTable["protein"]],
+                    backgroundColor: "rgba(255,99,132,0.2)",
+                    borderColor: "rgba(255,99,132,1)",
+                    borderWidth: 1,
+                    hoverBackgroundColor: "rgba(255,99,132,0.4)",
+                    hoverBorderColor: "rgba(255,99,132,1)"                    
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                }
+            }
+        });
+    };
+
 
     //new version
     $("#points").text(points);
