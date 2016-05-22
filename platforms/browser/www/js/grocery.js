@@ -184,16 +184,17 @@ $(document).ready(function () {
         $("#allergyList").append(allergyTemplate);
          $('.addAllergyInput').keypress(function (e) {
           if (e.which == 13) {
+          	alert("Sorry! Food entered not in database...");
             var allergyAnswer = $(this).val();
             $(this).after("<div class='allergy'>" + allergyAnswer + "</div>");
             $(this).remove();
-           	foods[allergyAnswer] = {
-	        	nutrients: null,
-	        	carbohydrates: null,
-	        	sugar: null,
-	        	toggled: false,
-	        	imageSrc : null       		
-           	};
+          //  	foods[allergyAnswer] = {
+	        	// nutrients: null,
+	        	// carbohydrates: null,
+	        	// sugar: null,
+	        	// toggled: false,
+	        	// imageSrc : null       		
+          //  	};
             //$(".addAllergyRow").append("<div class='allergy'>" + allergyAnswer + "</div>");
             return false;    //<---- Add this line
           }
