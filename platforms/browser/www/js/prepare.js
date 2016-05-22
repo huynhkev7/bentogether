@@ -48,12 +48,12 @@ $(document).ready(function () {
 	console.log(selectedFood);
 	var tasks = {
 		sandwich: {
-			task: "create sandwhich",
-			points: 20,
+			task: "Make sandwich",
+			points: 50,
 			image: "images/foods/sandwich.png"	
 		},
 		apple: {
-			task: "cut the apples",
+			task: "Cut the apples",
 			points: 10,
 			image: "images/foods/apple.png"	
 		},
@@ -63,19 +63,54 @@ $(document).ready(function () {
 			image: "images/foods/cookies.png"	
 		},
 		carrots: {
-			task: "cut carrots",
-			points: 30,
+			task: "Cut carrots",
+			points: 10,
 			image: "images/foods/carrot.png"	
 		},
 		sushi: {
-			task: "wrap the sushi",
-			points: 100,
+			task: "Wrap the sushi",
+			points: 45,
 			image: "images/foods/sushi.png"
 		},	
 		soda: {
 			task: null,
 			points: null,
 			image: "http://www.clipartlord.com/wp-content/uploads/2013/12/soda-can.png"			
+		},
+		orange: {
+			task: "Peel the orange",
+			points: 5,
+			image: "images/foods/orange.png"
+		},
+		pizza: {
+			task: "Slice the pizza",
+			points: 10,
+			image: "images/foods/pizza.png"
+		},
+		broccili: {
+			task: "Chop the broccili",
+			points: 10,
+			image: "images/foods/broccoli.png"
+		},
+		asparagus: {
+			task: "Chop the asparagus",
+			points: 10,
+			image: "images/foods/asparagus.png"
+		},
+		cheese: {
+			task: "Slice the cheese",
+			points: 5,
+			image: "images/foods/cheese.png"
+		},
+		blueberries: {
+			task: "Wash the blueberries",
+			points: 5,
+			image: "images/foods/blueberries.png"
+		},
+		eggs: {
+			task: "Crack and cook the eggs",
+			points: 20,
+			image: "images/foods/eggs.png"
 		}
 	};
 
