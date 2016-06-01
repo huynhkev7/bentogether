@@ -422,6 +422,10 @@ interact('.dropzone').dropzone({
       window.location = "approve.html";
     });
     //new version
+
+    $("#reset").click(function(){
+      window.location.reload();
+    });
     $("#points").text(points);
     //attachAccessory();
     //pick what color of pet
